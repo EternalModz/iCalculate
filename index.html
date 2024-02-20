@@ -37,7 +37,7 @@
 
         #buttons {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 10px;
         }
 
@@ -57,16 +57,9 @@
             background-color: #555;
         }
 
-        /* Additional styling for specific buttons */
-        #buttons button.operator {
-            background-color: #007BFF;
-            color: #fff;
-        }
-
-        #buttons button.equal {
-            background-color: #007BFF;
-            color: #fff;
+        #equal {
             grid-column: span 2;
+            background-color: #007BFF;
         }
     </style>
 </head>
@@ -78,26 +71,22 @@
             <button onclick="appendToInput('7')">7</button>
             <button onclick="appendToInput('8')">8</button>
             <button onclick="appendToInput('9')">9</button>
-
             <button onclick="appendToInput('4')">4</button>
             <button onclick="appendToInput('5')">5</button>
             <button onclick="appendToInput('6')">6</button>
-
             <button onclick="appendToInput('1')">1</button>
             <button onclick="appendToInput('2')">2</button>
             <button onclick="appendToInput('3')">3</button>
-
             <button onclick="appendToInput('0')">0</button>
-            <button onclick="appendToInput('.')">.</button>
 
-            <!-- Operations -->
-            <button class="operator" onclick="appendToInput('+')">+</button>
-            <button class="operator" onclick="appendToInput('-')">-</button>
-            <button class="operator" onclick="appendToInput('*')">×</button>
-            <button class="operator" onclick="appendToInput('/')">÷</button>
+            <!-- Basic arithmetic operations -->
+            <button onclick="appendToInput('+')">+</button>
+            <button onclick="appendToInput('-')">-</button>
+            <button onclick="appendToInput('*')">*</button>
+            <button onclick="appendToInput('/')">/</button>
 
             <!-- Equal sign -->
-            <button class="equal" onclick="calculate()">=</button>
+            <button id="equal" onclick="calculate()">=</button>
 
             <!-- Other functions -->
             <button onclick="appendToInput('!')">!</button>
