@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>iPad Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f8f8f8; /* Default light mode background */
+      color: #333; /* Default text color */
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .calculator {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      width: 300px;
+    }
+
+    .calculator-header {
+      background-color: #eee;
+      padding: 10px;
+      text-align: right;
+      font-size: 1.5em;
+    }
+
+    .calculator-body {
+      padding: 20px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    .button {
+      padding: 15px;
+      font-size: 1.2em;
+      text-align: center;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #e0e0e0;
+      transition: background-color 0.3s;
+    }
+
+    .button:active {
+      background-color: #ccc;
+    }
+
+    /* Dark mode styles */
+    body.dark-mode {
+      background-color: #333;
+      color: #fff;
+    }
+
+    .calculator.dark-mode {
+      background-color: #444;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .calculator-header.dark-mode {
+      background-color: #555;
+    }
+
+    .button.dark-mode {
+      background-color: #666;
+    }
+
+    .button.dark-mode:active {
+      background-color: #888;
+    }
+
+    /* Computer mode styles */
+    body.computer-mode {
+      background-color: #000;
+      color: #fff;
+    }
+
+    .calculator.computer-mode {
+      background-color: #111;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+    }
+
+    .calculator-header.computer-mode {
+      background-color: #222;
+    }
+
+    .button.computer-mode {
+      background-color: #333;
+    }
+
+    .button.computer-mode:active {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+  <div class="calculator">
+    <div class="calculator-header" id="display">0</div>
+    <div class="calculator-body" onclick="handleButtonClick(event)">
+      <!-- Calculator buttons will be generated here dynamically -->
+    </div>
+  </div>
+
+  <script>
+    const buttons = [
+      '7', '8', '9', '/',
+      '4', '5', '6', '*',
+      '1', '2', '3', '-',
+      '0', '.', '=', '+',
+    ];
+
+    const calculatorBody = document.querySelector('.calculator-body');
+    buttons.forEach(buttonText => {
+      const button = document.createElement('button');
+      button.textContent = buttonText;
+      button.classList.add('button');
+      calculatorBody.appendChild(button);
+    });
+
+    function handleButtonClick(event) {
+      const button = event.target;
+      if (button.classList.contains('button')) {
+        const buttonText = button.textContent;
+        updateDisplay(buttonText);
+      }
+    }
+
+    function updateDisplay(value) {
+      const display = document.getElementById('display');
+      display.textContent = value;
+    }
+
+    // Toggle dark mode
+    function toggleDarkMode() {
+      document.body.classList.toggle('dark-mode');
+      document.querySelector('.calculator').classList.toggle('dark-mode');
+      document.querySelector('.calculator-header').classList.toggle('dark-mode');
+      document.querySelectorAll('.button').forEach(button => button.classList.toggle('dark-mode'));
+    }
+
+    // Toggle computer mode
+    function toggleComputerMode() {
+      document.body.classList.toggle('computer-mode');
+      document.querySelector('.calculator').classList.toggle('computer-mode');
+      document.querySelector('.calculator-header').classList.toggle('computer-mode');
+      document.querySelectorAll('.button').forEach(button => button.classList.toggle('computer-mode'));
+    }
+  </script>
+</body>
+</html>
