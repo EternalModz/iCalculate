@@ -5,17 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Math Calculator</title>
     <style>
-        /* Your styles here */
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
         #calculator {
-            max-width: 600px;
-            margin: 0 auto;
+            max-width: 400px;
+            width: 100%;
         }
 
         #display {
             width: 100%;
             box-sizing: border-box;
-            padding: 10px;
+            padding: 15px;
             font-size: 1.5em;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            text-align: right;
         }
 
         #buttons {
@@ -29,6 +46,15 @@
             padding: 15px;
             font-size: 1.2em;
             margin: 5px 0;
+            background-color: #444;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #buttons button:active {
+            background-color: #555;
         }
     </style>
 </head>
@@ -139,6 +165,40 @@
                     updateDisplay();
                 }
             }
+
+            // Attach click event listeners to all buttons
+            const buttons = document.querySelectorAll('#buttons button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const buttonText = this.innerText;
+                    switch (buttonText) {
+                        case 'AC':
+                            clear();
+                            break;
+                        case '=':
+                            calculate();
+                            break;
+                        default:
+                            appendToInput(buttonText);
+                            break;
+                    }
+                });
+            });
+
+            // Attach keypress event listener for additional input method
+            document.addEventListener('keypress', function (event) {
+                const key = event.key;
+                if (key.match(/[0-9+\-*/().=!%^]/)) {
+                    // Only allow valid keys for the calculator
+                    if (key === '=') {
+                        calculate();
+                    } else {
+                        appendToInput(key);
+                    }
+                } else if (key === 'Enter') {
+                    calculate(); // Allow Enter key for calculation
+                }
+            });
         });
     </script>
 </body>
