@@ -18,7 +18,7 @@
         }
 
         #calculator {
-            max-width: 400px;
+            max-width: 600px;
             width: 100%;
         }
 
@@ -37,7 +37,7 @@
 
         #buttons {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 10px;
         }
 
@@ -57,8 +57,16 @@
             background-color: #555;
         }
 
+        /* Additional styling for specific buttons */
+        #buttons button.operator {
+            background-color: #007BFF;
+            color: #fff;
+        }
+
         #buttons button.equal {
-            background-color: blue;
+            background-color: #007BFF;
+            color: #fff;
+            grid-column: span 2;
         }
     </style>
 </head>
@@ -66,48 +74,36 @@
     <div id="calculator">
         <input type="text" id="display" readonly>
         <div id="buttons">
+            <!-- Numbers -->
+            <button onclick="appendToInput('7')">7</button>
+            <button onclick="appendToInput('8')">8</button>
+            <button onclick="appendToInput('9')">9</button>
+
+            <button onclick="appendToInput('4')">4</button>
+            <button onclick="appendToInput('5')">5</button>
+            <button onclick="appendToInput('6')">6</button>
+
+            <button onclick="appendToInput('1')">1</button>
+            <button onclick="appendToInput('2')">2</button>
+            <button onclick="appendToInput('3')">3</button>
+
+            <button onclick="appendToInput('0')">0</button>
+            <button onclick="appendToInput('.')">.</button>
+
+            <!-- Operations -->
+            <button class="operator" onclick="appendToInput('+')">+</button>
+            <button class="operator" onclick="appendToInput('-')">-</button>
+            <button class="operator" onclick="appendToInput('*')">×</button>
+            <button class="operator" onclick="appendToInput('/')">÷</button>
+
+            <!-- Equal sign -->
+            <button class="equal" onclick="calculate()">=</button>
+
             <!-- Other functions -->
             <button onclick="appendToInput('!')">!</button>
             <button onclick="appendToInput('%')">%</button>
             <button onclick="appendToInput('1/x')">1/x</button>
             <button onclick="appendToInput('+/-')">+/-</button>
-            <button class="equal" onclick="calculate()">=</button>
-
-            <!-- Numeric buttons -->
-            <button onclick="appendToInput('7')">7</button>
-            <button onclick="appendToInput('8')">8</button>
-            <button onclick="appendToInput('9')">9</button>
-            <button onclick="appendToInput('/')">/</button>
-
-            <button onclick="appendToInput('4')">4</button>
-            <button onclick="appendToInput('5')">5</button>
-            <button onclick="appendToInput('6')">6</button>
-            <button onclick="appendToInput('*')">*</button>
-
-            <button onclick="appendToInput('1')">1</button>
-            <button onclick="appendToInput('2')">2</button>
-            <button onclick="appendToInput('3')">3</button>
-            <button onclick="appendToInput('-')">-</button>
-
-            <button onclick="appendToInput('0')">0</button>
-            <button onclick="appendToInput('.')">.</button>
-            <button onclick="appendToInput('+')">+</button>
-
-            <!-- Basic calculator buttons -->
-            <button onclick="appendToInput('m+')">m+</button>
-            <button onclick="appendToInput('m-')">m-</button>
-            <button onclick="appendToInput('m')">m</button>
-            <button onclick="clear()">AC</button>
-
-            <!-- Parentheses, Mod, and Special Characters -->
-            <button onclick="appendToInput('('">(</button>
-            <button onclick="appendToInput(')')">)</button>
-            <button onclick="appendToInput('mod')">mod</button>
-            <button onclick="appendToInput('∩')">∩</button>
-
-            <!-- Other symbols -->
-            <button onclick="appendToInput('Х~У')">Х~У</button>
-            <button onclick="appendToInput('亠')">亠</button>
 
             <!-- Logarithmic and Exponential functions -->
             <button onclick="appendToInput('log')">log</button>
@@ -131,6 +127,16 @@
             <button onclick="appendToInput('bin')">bin</button>
             <button onclick="appendToInput('oct')">oct</button>
             <button onclick="appendToInput('hex')">hex</button>
+
+            <!-- Parentheses, Mod, and Special Characters -->
+            <button onclick="appendToInput('('">(</button>
+            <button onclick="appendToInput(')')">)</button>
+            <button onclick="appendToInput('mod')">mod</button>
+            <button onclick="appendToInput('∩')">∩</button>
+
+            <!-- Other symbols -->
+            <button onclick="appendToInput('Х~У')">Х~У</button>
+            <button onclick="appendToInput('亠')">亠</button>
         </div>
     </div>
 
