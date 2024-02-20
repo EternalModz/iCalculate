@@ -37,7 +37,7 @@
 
         #buttons {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 10px;
         }
 
@@ -53,13 +53,12 @@
             cursor: pointer;
         }
 
-        #buttons button:active {
-            background-color: #555;
+        #buttons button.operator {
+            background-color: #00f;
         }
 
-        #equal {
-            grid-column: span 2;
-            background-color: #007BFF;
+        #buttons button:active {
+            background-color: #555;
         }
     </style>
 </head>
@@ -78,54 +77,42 @@
             <button onclick="appendToInput('2')">2</button>
             <button onclick="appendToInput('3')">3</button>
             <button onclick="appendToInput('0')">0</button>
-
-            <!-- Basic arithmetic operations -->
-            <button onclick="appendToInput('+')">+</button>
-            <button onclick="appendToInput('-')">-</button>
-            <button onclick="appendToInput('*')">*</button>
-            <button onclick="appendToInput('/')">/</button>
-
-            <!-- Equal sign -->
-            <button id="equal" onclick="calculate()">=</button>
+            <button onclick="appendToInput('.')">.</button>
 
             <!-- Other functions -->
-            <button onclick="appendToInput('!')">!</button>
-            <button onclick="appendToInput('%')">%</button>
-            <button onclick="appendToInput('1/x')">1/x</button>
-            <button onclick="appendToInput('+/-')">+/-</button>
-
-            <!-- Logarithmic and Exponential functions -->
+            <button onclick="appendToInput('sin')">sin</button>
+            <button onclick="appendToInput('cos')">cos</button>
+            <button onclick="appendToInput('tan')">tan</button>
+            <button onclick="appendToInput('sqrt')">√</button>
             <button onclick="appendToInput('log')">log</button>
-            <button onclick="appendToInput('loge')">loge</button>
             <button onclick="appendToInput('exp')">exp</button>
             <button onclick="appendToInput('10^')">10^</button>
-
-            <!-- Square root variations -->
             <button onclick="appendToInput('fsqrt')">fsqrt</button>
             <button onclick="appendToInput('fsqrtf')">fsqrtf</button>
             <button onclick="appendToInput('f_sqrt')">f_sqrt</button>
             <button onclick="appendToInput('f_sqrtf')">f_sqrtf</button>
-
-            <!-- Advanced functions -->
             <button onclick="appendToInput('2^')">2^</button>
             <button onclick="appendToInput('e*')">e*</button>
             <button onclick="appendToInput('x~m')">x~m</button>
             <button onclick="appendToInput('m re')">m re</button>
-
-            <!-- Binary, Octal, Hexadecimal -->
             <button onclick="appendToInput('bin')">bin</button>
             <button onclick="appendToInput('oct')">oct</button>
             <button onclick="appendToInput('hex')">hex</button>
-
-            <!-- Parentheses, Mod, and Special Characters -->
             <button onclick="appendToInput('('">(</button>
             <button onclick="appendToInput(')')">)</button>
             <button onclick="appendToInput('mod')">mod</button>
             <button onclick="appendToInput('∩')">∩</button>
-
-            <!-- Other symbols -->
             <button onclick="appendToInput('Х~У')">Х~У</button>
             <button onclick="appendToInput('亠')">亠</button>
+
+            <!-- Basic operators -->
+            <button class="operator" onclick="appendToInput('+')">+</button>
+            <button class="operator" onclick="appendToInput('-')">-</button>
+            <button class="operator" onclick="appendToInput('*')">*</button>
+            <button class="operator" onclick="appendToInput('/')">/</button>
+
+            <!-- Equal sign -->
+            <button class="operator" onclick="calculate()">=</button>
         </div>
     </div>
 
@@ -158,40 +145,6 @@
                     updateDisplay();
                 }
             }
-
-            // Attach click event listeners to all buttons
-            const buttons = document.querySelectorAll('#buttons button');
-            buttons.forEach(button => {
-                button.addEventListener('click', function () {
-                    const buttonText = this.innerText;
-                    switch (buttonText) {
-                        case 'AC':
-                            clear();
-                            break;
-                        case '=':
-                            calculate();
-                            break;
-                        default:
-                            appendToInput(buttonText);
-                            break;
-                    }
-                });
-            });
-
-            // Attach keypress event listener for additional input method
-            document.addEventListener('keypress', function (event) {
-                const key = event.key;
-                if (key.match(/[0-9+\-*/().=!%^]/)) {
-                    // Only allow valid keys for the calculator
-                    if (key === '=') {
-                        calculate();
-                    } else {
-                        appendToInput(key);
-                    }
-                } else if (key === 'Enter') {
-                    calculate(); // Allow Enter key for calculation
-                }
-            });
         });
     </script>
 </body>
