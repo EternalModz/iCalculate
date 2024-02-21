@@ -196,7 +196,7 @@
         function appendToInput(value) {
             // If the display already shows the current format, remove it before appending
             if (display.value.includes(currentFormat.toUpperCase() + ":")) {
-                display.value = display.value.slice(currentFormat.length + 1);
+                display.value = display.value.slice(currentFormat.length + 2);
             }
 
             display.value += value;
@@ -208,7 +208,7 @@
 
                 // Check if the display includes the format, and remove it
                 if (display.value.includes(currentFormat.toUpperCase() + ":")) {
-                    inputValue = inputValue.slice(currentFormat.length + 1);
+                    inputValue = inputValue.slice(currentFormat.length + 2);
                 }
 
                 // Convert input to decimal format before evaluation
