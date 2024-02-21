@@ -127,10 +127,65 @@
             <button class="operator" onclick="appendToDisplay('-')">-</button>
             <button class="operator" onclick="appendToDisplay('*')">x</button>
             <button class="operator" onclick="appendToDisplay('/')">÷</button>
+            <button class="operator" onclick="appendToDisplay('+')">+</button>
 
             <!-- Other functions -->
             <button onclick="appendToDisplay('Math.sin(')">sin</button>
-            <!-- ... (unchanged) ... -->
+            <button onclick="appendToDisplay('Math.cos(')">cos</button>
+            <button onclick="appendToDisplay('Math.tan(')">tan</button>
+            <button onclick="appendToDisplay('1/Math.sin(')">csc</button>
+            <button onclick="appendToDisplay('1/Math.cos(')">sec</button>
+            <button onclick="appendToDisplay('1/Math.tan(')">cot</button>
+            <button onclick="appendToDisplay('**2')">x<sup>2</sup></button>
+            <button onclick="appendToDisplay('**10')">x<sup>10</sup></button>
+            <button onclick="memoryAdd()">m+</button>
+            <button onclick="memorySubtract()">m-</button>
+            <button onclick="appendToDisplay('Math.acos(')">acos</button>
+            <button onclick="appendToDisplay('Math.asin(')">asin</button>
+            <button onclick="appendToDisplay('Math.atan(')">atan</button>
+            <button onclick="appendToDisplay('Math.log10(')">log<sub>10</sub></button>
+            <button onclick="appendToDisplay('Math.log2(')">log<sub>2</sub></button>
+            <button onclick="appendToDisplay('Math.log(')">log<sub>e</sub></button>
+            <button onclick="appendToDisplay('Math.exp(')">exp</button>
+            <button onclick="appendToDisplay('**10')">10<sup>x</sup></button>
+            <button onclick="appendToDisplay('**2')">2<sup>x</sup></button>
+            <button onclick="appendToDisplay('Math.round(')">round</button>
+            <button onclick="factorial()">x!</button>
+            <button onclick="min()">min</button>
+            <button onclick="appendToDisplay('Math.exp(')">e<sup>x</sup></button>
+            <button onclick="appendToDisplay('~')">~</button>
+            <button onclick="appendToDisplay('Math.re(')">re</button>
+            <button onclick="appendToDisplay('Math.exp(')">exp</button>
+
+            <!-- Square root functions -->
+            <button onclick="appendToDisplay('Math.sqrt(')">√</button>
+            <button onclick="appendToDisplay('nroot')">n√</button>
+
+            <!-- Computer functions -->
+            <button class="format" onclick="setFormat('hex')">Hex</button>
+            <button class="format" onclick="setFormat('dec')">Dec</button>
+            <button class="format" onclick="setFormat('bin')">Bin</button>
+            <button onclick="appendToDisplay('Math.sqrt(')">sqrt</button>
+            <button onclick="appendToDisplay('Math.sqrt(')">fsqrt</button>
+            <button onclick="appendToDisplay('Math.sqrt(')">fsqrtf</button>
+            <button onclick="appendToDisplay('Math.sqrt(')">f_sqrt</button>
+            <button onclick="appendToDisplay('Math.sqrt(')">f_sqrtf</button>
+
+            <!-- Parentheses, Mod, and Special Characters -->
+            <button onclick="appendToDisplay('('">(</button>
+            <button onclick="appendToDisplay(')')">)</button>
+            <button onclick="appendToDisplay('%')">%</button>
+
+            <!-- Constants and special symbols -->
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="memoryClear()">MC</button>
+            <button onclick="clearAll()">AC</button>
+            <button onclick="toggleSign()">+/-</button>
+            <button onclick="appendToDisplay('Math.degrees(')">deg</button>
+            <button onclick="appendToDisplay('Math.radians(')">rad</button>
+            <button onclick="appendToDisplay('Math.PI')">π</button>
+            <button onclick="appendToDisplay('Math.hypot(')">hyp</button>
+            <button onclick="appendToDisplay('1/Math(')">1/x</button>
 
             <!-- Equal sign -->
             <button class="operator equal" onclick="calculate()">=</button>
@@ -156,10 +211,12 @@
 
         function appendToDisplay(value) {
             document.getElementById('display').value += value;
+            convertAll();
         }
 
         function clearDisplay() {
             document.getElementById('display').value = '';
+            convertAll();
         }
 
         function calculate() {
@@ -195,6 +252,7 @@
 
         function setFormat(format) {
             currentFormat = format;
+            convertAll();
         }
 
         function factorial() {
@@ -205,6 +263,7 @@
                     result *= i;
                 }
                 document.getElementById('display').value = result;
+                convertAll();
             } else {
                 document.getElementById('display').value = 'Error';
             }
@@ -214,12 +273,14 @@
             const values = document.getElementById('display').value.split(',');
             const result = Math.min(...values);
             document.getElementById('display').value = result;
+            convertAll();
         }
 
         function toggleSign() {
             const currentValue = parseFloat(document.getElementById('display').value);
             if (!isNaN(currentValue)) {
                 document.getElementById('display').value = -currentValue;
+                convertAll();
             }
         }
 
@@ -232,32 +293,33 @@
             document.getElementById('toggleColorMode').style.backgroundColor = darkMode ? '#343a40' : '#ddd';
         }
 
-        function convert(inputFormat) {
-            const inputElement = document.getElementById(`${inputFormat}Input`);
-            const inputValue = inputElement.value;
+        function convert(format) {
+            const inputElement = document.getElementById(`${format}Input`);
+            let inputValue = inputElement.value;
 
-            if (inputFormat === 'hex') {
-                // Convert Hex to Dec and Bin
-                const decValue = parseInt(inputValue, 16);
-                const binValue = decValue.toString(2);
-
-                document.getElementById('decInput').value = decValue;
-                document.getElementById('binInput').value = binValue;
-            } else if (inputFormat === 'dec') {
-                // Convert Dec to Hex and Bin
-                const hexValue = parseInt(inputValue, 10).toString(16).toUpperCase();
-                const binValue = parseInt(inputValue, 10).toString(2);
-
-                document.getElementById('hexInput').value = hexValue;
-                document.getElementById('binInput').value = binValue;
-            } else if (inputFormat === 'bin') {
-                // Convert Bin to Dec and Hex
-                const decValue = parseInt(inputValue, 2);
-                const hexValue = decValue.toString(16).toUpperCase();
-
-                document.getElementById('decInput').value = decValue;
-                document.getElementById('hexInput').value = hexValue;
+            switch (format) {
+                case 'hex':
+                    inputValue = parseInt(inputValue, 16);
+                    break;
+                case 'dec':
+                    inputValue = parseInt(inputValue, 10);
+                    break;
+                case 'bin':
+                    inputValue = parseInt(inputValue, 2);
+                    break;
+                default:
+                    break;
             }
+
+            document.getElementById('hexInput').value = inputValue.toString(16);
+            document.getElementById('decInput').value = inputValue.toString(10);
+            document.getElementById('binInput').value = inputValue.toString(2);
+        }
+
+        function convertAll() {
+            convert('hex');
+            convert('dec');
+            convert('bin');
         }
     </script>
 </body>
