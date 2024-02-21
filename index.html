@@ -24,7 +24,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 80%;
+            width: 60%;
             max-width: 400px;
         }
 
@@ -78,7 +78,7 @@
 
         #sidebar {
             width: 20%;
-            height: 100%;
+            height: 100vh;
             background-color: #555;
             display: flex;
             flex-direction: column;
@@ -130,65 +130,14 @@
             <button class="operator" onclick="appendToDisplay('+')">+</button>
             <button class="operator equal" onclick="calculate()">=</button>
 
-            <!-- Row 5 -->
+            <!-- Other functions -->
             <button onclick="appendToDisplay('Math.sin(')">sin</button>
             <button onclick="appendToDisplay('Math.cos(')">cos</button>
             <button onclick="appendToDisplay('Math.tan(')">tan</button>
             <button onclick="appendToDisplay('1/Math.sin(')">csc</button>
             <button onclick="appendToDisplay('1/Math.cos(')">sec</button>
-
-            <!-- Additional buttons -->
             <button onclick="appendToDisplay('1/Math.tan(')">cot</button>
-            <button onclick="appendToDisplay('**2')">x<sup>2</sup></button>
-            <button onclick="appendToDisplay('**10')">x<sup>10</sup></button>
-            <button onclick="memoryAdd()">m+</button>
-            <button onclick="memorySubtract()">m-</button>
-            <button onclick="appendToDisplay('Math.acos(')">acos</button>
-            <button onclick="appendToDisplay('Math.asin(')">asin</button>
-            <button onclick="appendToDisplay('Math.atan(')">atan</button>
-            <button onclick="appendToDisplay('Math.log10(')">log<sub>10</sub></button>
-            <button onclick="appendToDisplay('Math.log2(')">log<sub>2</sub></button>
-            <button onclick="appendToDisplay('Math.log(')">log<sub>e</sub></button>
-            <button onclick="appendToDisplay('Math.exp(')">exp</button>
-            <button onclick="appendToDisplay('**10')">10<sup>x</sup></button>
-            <button onclick="appendToDisplay('**2')">2<sup>x</sup></button>
-            <button onclick="appendToDisplay('Math.round(')">round</button>
-            <button onclick="factorial()">x!</button>
-            <button onclick="min()">min</button>
-            <button onclick="appendToDisplay('Math.exp(')">e<sup>x</sup></button>
-            <button onclick="appendToDisplay('~')">~</button>
-            <button onclick="appendToDisplay('Math.re(')">re</button>
-            <button onclick="appendToDisplay('Math.exp(')">exp</button>
 
-            <!-- Square root functions -->
-            <button onclick="appendToDisplay('Math.sqrt(')">√</button>
-            <button onclick="appendToDisplay('nroot')">n√</button>
-
-            <!-- Computer functions -->
-            <button class="format" onclick="setFormat('hex')">Hex</button>
-            <button class="format" onclick="setFormat('dec')">Dec</button>
-            <button class="format" onclick="setFormat('bin')">Bin</button>
-            <button onclick="appendToDisplay('Math.sqrt(')">sqrt</button>
-            <button onclick="appendToDisplay('Math.sqrt(')">fsqrt</button>
-            <button onclick="appendToDisplay('Math.sqrt(')">fsqrtf</button>
-            <button onclick="appendToDisplay('Math.sqrt(')">f_sqrt</button>
-            <button onclick="appendToDisplay('Math.sqrt(')">f_sqrtf</button>
-
-            <!-- Parentheses, Mod, and Special Characters -->
-            <button onclick="appendToDisplay('('">(</button>
-            <button onclick="appendToDisplay(')')">)</button>
-            <button onclick="appendToDisplay('%')">%</button>
-
-            <!-- Constants and special symbols -->
-            <button onclick="clearDisplay()">C</button>
-            <button onclick="memoryClear()">MC</button>
-            <button onclick="clearAll()">AC</button>
-            <button onclick="toggleSign()">+/-</button>
-            <button onclick="appendToDisplay('Math.degrees(')">deg</button>
-            <button onclick="appendToDisplay('Math.radians(')">rad</button>
-            <button onclick="appendToDisplay('Math.PI')">π</button>
-            <button onclick="appendToDisplay('Math.hypot(')">hyp</button>
-            <button onclick="appendToDisplay('1/Math(')">1/x</button>
         </div>
     </div>
 
@@ -221,7 +170,6 @@
             } catch (error) {
                 document.getElementById('display').value = 'Error';
             }
-            convertAll();
         }
 
         function memoryAdd() {
