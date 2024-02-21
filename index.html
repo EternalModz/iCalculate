@@ -214,6 +214,8 @@
                 // Convert input to decimal format before evaluation
                 switch (currentFormat) {
                     case 'hex':
+                        // Ensure A-F are in uppercase
+                        inputValue = inputValue.toUpperCase();
                         inputValue = parseInt(inputValue, 16);
                         break;
                     case 'bin':
@@ -228,7 +230,7 @@
                 // Convert the result to the original format
                 switch (currentFormat) {
                     case 'hex':
-                        result = '0x' + result.toString(16);
+                        result = '0x' + result.toString(16).toUpperCase();
                         break;
                     case 'bin':
                         result = '0b' + result.toString(2);
