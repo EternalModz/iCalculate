@@ -87,8 +87,8 @@
             <!-- Basic operators -->
             <button class="operator" onclick="appendToInput('+')">+</button>
             <button class="operator" onclick="appendToInput('-')">-</button>
-            <button class="operator" onclick="appendToInput('*')">*</button>
-            <button class="operator" onclick="appendToInput('/')">/</button>
+            <button class="operator" onclick="appendToInput('*')">x</button>
+            <button class="operator" onclick="appendToInput('/')">÷</button>
 
             <!-- Other functions -->
             <button onclick="appendToInput('sin')">sin</button>
@@ -119,22 +119,31 @@
             <button onclick="appendToInput('m re')">m re</button>
             <button onclick="appendToInput('exp')">exp</button>
 
+            <!-- Square root functions -->
+            <button onclick="appendToInput('√')">√</button>
+            <button onclick="appendToInput('n√')">n√</button>
+
+            <!-- Computer functions -->
+            <button onclick="appendToInput('bin')">bin</button>
+            <button onclick="appendToInput('dec')">dec</button>
+            <button onclick="appendToInput('hex')">hex</button>
+            <button onclick="appendToInput('sqrt')">sqrt</button>
+            <button onclick="appendToInput('fsqrt')">fsqrt</button>
+            <button onclick="appendToInput('fsqrtf')">fsqrtf</button>
+            <button onclick="appendToInput('f_sqrt')">f_sqrt</button>
+            <button onclick="appendToInput('f_sqrtf')">f_sqrtf</button>
+
             <!-- Parentheses, Mod, and Special Characters -->
             <button onclick="appendToInput('('">(</button>
             <button onclick="appendToInput(')')">)</button>
             <button onclick="appendToInput('mod')">mod</button>
 
             <!-- Constants and special symbols -->
-            <button onclick="appendToInput('dec')">dec</button>
-            <button onclick="appendToInput('hex')">hex</button>
-            <button onclick="appendToInput('oct')">oct</button>
-            <button onclick="appendToInput('bin')">bin</button>
-            <button onclick="appendToInput('Х~У')">Х~У</button>
             <button onclick="clear()">C</button>
             <button onclick="clearMemory()">MC</button>
             <button onclick="clearAll()">AC</button>
             <button onclick="toggleSign()">+/-</button>
-            <button onclick="appendToInput('deg')">></button>
+            <button onclick="appendToInput('deg')">deg</button>
             <button onclick="appendToInput('rad')">rad</button>
             <button onclick="appendToInput('π')">π</button>
             <button onclick="appendToInput('hyp')">hyp</button>
