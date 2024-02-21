@@ -7,7 +7,8 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
+            background-color: #222; /* Dark mode background color */
+            color: #fff; /* Dark mode text color */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -16,8 +17,8 @@
         }
 
         #calculator {
-            background-color: #fff;
-            border: 1px solid #ccc;
+            background-color: #333; /* Dark mode calculator background color */
+            border: 1px solid #555; /* Dark mode calculator border color */
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -29,6 +30,8 @@
             padding: 10px;
             font-size: 1.5em;
             text-align: right;
+            background-color: #444; /* Dark mode display background color */
+            color: #fff; /* Dark mode display text color */
         }
 
         #buttons {
@@ -41,26 +44,54 @@
             width: 100%;
             padding: 15px;
             font-size: 1.2em;
-            border: 1px solid #ccc;
+            border: 1px solid #555; /* Dark mode button border color */
             border-radius: 5px;
-            background-color: #f9f9f9;
+            background-color: #666; /* Dark mode button background color */
+            color: #fff; /* Dark mode button text color */
             cursor: pointer;
         }
 
         button.operator {
-            background-color: #ff9900;
-            color: #fff;
+            background-color: #ff9900; /* Operator button background color */
+            color: #222; /* Operator button text color */
         }
 
         button.equal {
             grid-column: span 2;
         }
+
+        /* Light mode styles */
+        body.light-mode {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        #calculator.light-mode {
+            background-color: #fff;
+            border: 1px solid #ccc;
+        }
+
+        #display.light-mode {
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        button.light-mode {
+            background-color: #f9f9f9;
+            color: #333;
+            border: 1px solid #ccc;
+        }
+
+        button.operator.light-mode {
+            background-color: #ff9900;
+            color: #fff;
+        }
     </style>
 </head>
-<body>
-    <div id="calculator">
-        <input type="text" id="display" readonly>
-        <div id="buttons">
+<body class="dark-mode">
+    <div id="calculator" class="dark-mode">
+        <input type="text" id="display" readonly class="dark-mode">
+        <div id="buttons" class="dark-mode">
             <!-- Numbers -->
             <button onclick="appendToInput('7')">7</button>
             <button onclick="appendToInput('8')">8</button>
@@ -140,11 +171,15 @@
 
             <!-- Equal sign -->
             <button class="operator equal" onclick="calculate()">=</button>
+
+            <!-- Color mode toggle button -->
+            <button onclick="toggleColorMode()">Toggle Color Mode</button>
         </div>
     </div>
 
     <script>
         let display = document.getElementById('display');
+        let body = document.body;
 
         function appendToInput(value) {
             display.value += value;
@@ -164,6 +199,13 @@
 
         function clearAll() {
             display.value = '';
+        }
+
+        function toggleColorMode() {
+            body.classList.toggle('light-mode');
+            document.querySelectorAll('#calculator, #display, #buttons button').forEach(element => {
+                element.classList.toggle('light-mode');
+            });
         }
 
         // Add other functions as needed
