@@ -3,67 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Math Calculator</title>
+    <title>Calculator</title>
     <style>
         body {
-            background-color: #000;
-            color: #fff;
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             height: 100vh;
+            margin: 0;
         }
 
         #calculator {
-            max-width: 600px;
-            width: 100%;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         #display {
-            width: 100%;
-            box-sizing: border-box;
-            padding: 15px;
-            font-size: 1.5em;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
+            width: calc(100% - 10px);
             margin-bottom: 10px;
+            padding: 10px;
+            font-size: 1.5em;
             text-align: right;
         }
 
         #buttons {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(6, 1fr);
             gap: 10px;
         }
 
-        #buttons button {
+        button {
             width: 100%;
             padding: 15px;
             font-size: 1.2em;
-            margin: 5px 0;
-            background-color: #444;
-            color: #fff;
-            border: none;
+            border: 1px solid #ccc;
             border-radius: 5px;
+            background-color: #f9f9f9;
             cursor: pointer;
         }
 
-        #buttons button.operator {
-            background-color: #00f;
+        button.operator {
+            background-color: #ff9900;
+            color: #fff;
         }
 
-        #buttons button sup {
-            font-size: 0.7em;
-            vertical-align: super;
-        }
-
-        #buttons button:active {
-            background-color: #555;
+        button.equal {
+            grid-column: span 2;
         }
     </style>
 </head>
@@ -149,63 +139,34 @@
             <button onclick="appendToInput('1/Math(')">1/x</button>
 
             <!-- Equal sign -->
-            <button class="operator" onclick="calculate()">=</button>
+            <button class="operator equal" onclick="calculate()">=</button>
         </div>
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const display = document.getElementById("display");
-            let currentInput = "";
+        let display = document.getElementById('display');
 
-            function updateDisplay() {
-                display.value = currentInput;
-            }
+        function appendToInput(value) {
+            display.value += value;
+        }
 
-            function clear() {
-                currentInput = "";
-                updateDisplay();
+        function calculate() {
+            try {
+                display.value = eval(display.value);
+            } catch (error) {
+                display.value = 'Error';
             }
+        }
 
-            function appendToInput(value) {
-                currentInput += value;
-                updateDisplay();
-            }
+        function clear() {
+            display.value = '';
+        }
 
-            function calculate() {
-                try {
-                    // Use Function constructor for safer evaluation
-                    const result = Function('"use strict";return (' + currentInput + ')')();
-                    currentInput = result.toString();
-                    updateDisplay();
-                } catch (error) {
-                    currentInput = "Error";
-                    updateDisplay();
-                }
-            }
+        function clearAll() {
+            display.value = '';
+        }
 
-            function clearMemory() {
-                currentInput = "";
-                updateDisplay();
-            }
-
-            function clearAll() {
-                currentInput = "";
-                updateDisplay();
-            }
-
-            function toggleSign() {
-                if (currentInput !== "") {
-                    const lastChar = currentInput[currentInput.length - 1];
-                    if (lastChar === '-') {
-                        currentInput = currentInput.slice(0, -1);
-                    } else {
-                        currentInput += '-';
-                    }
-                    updateDisplay();
-                }
-            }
-        });
+        // Add other functions as needed
     </script>
 </body>
 </html>
