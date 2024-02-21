@@ -75,19 +75,20 @@
             <button onclick="appendToInput('7')">7</button>
             <button onclick="appendToInput('8')">8</button>
             <button onclick="appendToInput('9')">9</button>
-            <button class="operator" onclick="appendToInput('/')">÷</button>
             <button onclick="appendToInput('4')">4</button>
             <button onclick="appendToInput('5')">5</button>
             <button onclick="appendToInput('6')">6</button>
-            <button class="operator" onclick="appendToInput('*')">x</button>
             <button onclick="appendToInput('1')">1</button>
             <button onclick="appendToInput('2')">2</button>
             <button onclick="appendToInput('3')">3</button>
-            <button class="operator" onclick="appendToInput('-')">-</button>
             <button onclick="appendToInput('0')">0</button>
             <button onclick="appendToInput('.')">.</button>
-            <button class="operator" onclick="calculate()">=</button>
+
+            <!-- Basic operators -->
             <button class="operator" onclick="appendToInput('+')">+</button>
+            <button class="operator" onclick="appendToInput('-')">-</button>
+            <button class="operator" onclick="appendToInput('*')">x</button>
+            <button class="operator" onclick="appendToInput('/')">÷</button>
 
             <!-- Other functions -->
             <button onclick="appendToInput('sin')">sin</button>
@@ -118,8 +119,8 @@
             <button onclick="appendToInput('exp')">exp</button>
 
             <!-- Square root functions -->
-            <button onclick="appendToInput('√')">√</button>
-            <button onclick="appendToInput('n√')">n√</button>
+            <button onclick="appendToInput('sqrt')">√</button>
+            <button onclick="appendToInput('nroot')">n√</button>
 
             <!-- Computer functions -->
             <button onclick="appendToInput('bin')">bin</button>
@@ -132,7 +133,7 @@
             <button onclick="appendToInput('f_sqrtf')">f_sqrtf</button>
 
             <!-- Parentheses, Mod, and Special Characters -->
-            <button onclick="appendToInput('('">(</button>
+            <button onclick="appendToInput('(')">(</button>
             <button onclick="appendToInput(')')">)</button>
             <button onclick="appendToInput('mod')">mod</button>
 
