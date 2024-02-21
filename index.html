@@ -66,6 +66,7 @@
 
         #calculator button.equal {
             background-color: #ffa500;
+            grid-column: span 4;
         }
 
         #calculator button.format {
@@ -124,7 +125,7 @@
 
             <!-- Bottom Row: = and others -->
             <button onclick="min()">min</button>
-            <button onclick="calculate()">=</button>
+            <button class="equal" onclick="calculate()">=</button>
         </div>
     </div>
 
