@@ -93,7 +93,6 @@
             color: #fff;
         }
 
-        /* Format button styles */
         button.format {
             background-color: #0088cc; /* Format button background color */
             color: #fff; /* Format button text color */
@@ -125,18 +124,45 @@
 
             <!-- Other functions -->
             <button onclick="appendToInput('Math.sin(')">sin</button>
-            <!-- ... Other functions ... -->
+            <button onclick="appendToInput('Math.cos(')">cos</button>
+            <button onclick="appendToInput('Math.tan(')">tan</button>
+            <button onclick="appendToInput('1/Math.sin(')">csc</button>
+            <button onclick="appendToInput('1/Math.cos(')">sec</button>
+            <button onclick="appendToInput('1/Math.tan(')">cot</button>
+            <button onclick="appendToInput('x2')">x<sup>2</sup></button>
+            <button onclick="appendToInput('x10')">x<sup>10</sup></button>
+            <button onclick="appendToInput('m+')">m+</button>
+            <button onclick="appendToInput('m-')">m-</button>
+            <button onclick="appendToInput('Math.acos(')">acos</button>
+            <button onclick="appendToInput('Math.asin(')">asin</button>
+            <button onclick="appendToInput('Math.atan(')">atan</button>
+            <button onclick="appendToInput('Math.log10(')">log<sub>10</sub></button>
+            <button onclick="appendToInput('Math.log2(')">log<sub>2</sub></button>
+            <button onclick="appendToInput('Math.log(')">log<sub>e</sub></button>
+            <button onclick="appendToInput('Math.exp(')">exp</button>
+            <button onclick="appendToInput('x10')">10<sup>x</sup></button>
+            <button onclick="appendToInput('x2')">2<sup>x</sup></button>
+            <button onclick="appendToInput('Math.round(')">round</button>
+            <button onclick="appendToInput('factorial(')">x!</button>
+            <button onclick="appendToInput('Math.min(')">min</button>
+            <button onclick="appendToInput('Math.exp(')">e<sup>x</sup></button>
+            <button onclick="appendToInput('~')">~</button>
+            <button onclick="appendToInput('Math.re(')">re</button>
+            <button onclick="appendToInput('Math.exp(')">exp</button>
 
             <!-- Square root functions -->
             <button onclick="appendToInput('Math.sqrt(')">√</button>
             <button onclick="appendToInput('nroot')">n√</button>
 
             <!-- Computer functions -->
-            <button onclick="appendToInput('bin')">bin</button>
-            <button onclick="appendToInput('dec')">dec</button>
-            <button onclick="appendToInput('hex')">hex</button>
+            <button class="format" onclick="setFormat('hex')">hex</button>
+            <button class="format" onclick="setFormat('dec')">dec</button>
+            <button class="format" onclick="setFormat('bin')">bin</button>
             <button onclick="appendToInput('Math.sqrt(')">sqrt</button>
-            <!-- ... Other computer functions ... -->
+            <button onclick="appendToInput('Math.sqrt(')">fsqrt</button>
+            <button onclick="appendToInput('Math.sqrt(')">fsqrtf</button>
+            <button onclick="appendToInput('Math.sqrt(')">f_sqrt</button>
+            <button onclick="appendToInput('Math.sqrt(')">f_sqrtf</button>
 
             <!-- Parentheses, Mod, and Special Characters -->
             <button onclick="appendToInput('('">(</button>
@@ -153,11 +179,6 @@
             <button onclick="appendToInput('Math.PI')">π</button>
             <button onclick="appendToInput('Math.hypot(')">hyp</button>
             <button onclick="appendToInput('1/Math(')">1/x</button>
-
-            <!-- Format buttons -->
-            <button class="format" onclick="setFormat('hex')">hex</button>
-            <button class="format" onclick="setFormat('dec')">dec</button>
-            <button class="format" onclick="setFormat('bin')">bin</button>
 
             <!-- Equal sign -->
             <button class="operator equal" onclick="calculate()">=</button>
