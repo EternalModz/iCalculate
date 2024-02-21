@@ -24,7 +24,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 60%;
+            width: 80%;
             max-width: 400px;
         }
 
@@ -43,7 +43,7 @@
         #calculator #buttons {
             width: 100%;
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 10px;
             padding: 10px;
         }
@@ -72,20 +72,13 @@
             width: 100%;
         }
 
-        #calculator button:hover {
-            background-color: #777;
-        }
-
         #sidebar {
             width: 20%;
-            height: 100vh;
             background-color: #555;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 20px;
-            position: fixed;
-            right: 0;
         }
 
         #converter {
@@ -106,38 +99,32 @@
     <div id="calculator" class="dark-mode">
         <input type="text" id="display" readonly class="dark-mode">
         <div id="buttons" class="dark-mode">
-            <!-- Row 1 -->
+            <!-- Top Row: AC, C, and others -->
+            <button onclick="clearAll()">AC</button>
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="toggleSign()">+/-</button>
+            <button onclick="appendToDisplay('%')">%</button>
+
+            <!-- Numbers and Basic Operators -->
             <button onclick="appendToDisplay('7')">7</button>
             <button onclick="appendToDisplay('8')">8</button>
             <button onclick="appendToDisplay('9')">9</button>
-            <button class="operator" onclick="appendToDisplay('/')">÷</button>
-
-            <!-- Row 2 -->
+            <button onclick="appendToDisplay('/')">÷</button>
             <button onclick="appendToDisplay('4')">4</button>
             <button onclick="appendToDisplay('5')">5</button>
             <button onclick="appendToDisplay('6')">6</button>
-            <button class="operator" onclick="appendToDisplay('*')">x</button>
-
-            <!-- Row 3 -->
+            <button onclick="appendToDisplay('*')">x</button>
             <button onclick="appendToDisplay('1')">1</button>
             <button onclick="appendToDisplay('2')">2</button>
             <button onclick="appendToDisplay('3')">3</button>
-            <button class="operator" onclick="appendToDisplay('-')">-</button>
-
-            <!-- Row 4 -->
+            <button onclick="appendToDisplay('-')">-</button>
             <button onclick="appendToDisplay('0')">0</button>
             <button onclick="appendToDisplay('.')">.</button>
-            <button class="operator" onclick="appendToDisplay('+')">+</button>
-            <button class="operator equal" onclick="calculate()">=</button>
+            <button onclick="appendToDisplay('+')">+</button>
 
-            <!-- Other functions -->
-            <button onclick="appendToDisplay('Math.sin(')">sin</button>
-            <button onclick="appendToDisplay('Math.cos(')">cos</button>
-            <button onclick="appendToDisplay('Math.tan(')">tan</button>
-            <button onclick="appendToDisplay('1/Math.sin(')">csc</button>
-            <button onclick="appendToDisplay('1/Math.cos(')">sec</button>
-            <button onclick="appendToDisplay('1/Math.tan(')">cot</button>
-
+            <!-- Bottom Row: = and others -->
+            <button onclick="min()">min</button>
+            <button onclick="calculate()">=</button>
         </div>
     </div>
 
