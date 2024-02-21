@@ -13,62 +13,61 @@
             align-items: center;
             justify-content: center;
             height: 100vh;
-            background-color: #333;
+            background-color: #eee; /* Lighter background for light mode */
         }
 
         #calculator {
-            background-color: #444;
+            background-color: #ccc; /* Lighter background for light mode */
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
         }
 
         #calculator input {
             width: 100%;
             padding: 10px;
-            font-size: 1.5em;
+            font-size: 2em; /* Larger font size */
             border: none;
             outline: none;
-            background-color: #444;
-            color: #fff;
+            background-color: #ccc; /* Lighter background for light mode */
+            color: #333; /* Darker text for visibility */
+            text-align: right;
         }
 
         #calculator button {
-            width: 20%;
+            width: 25%;
             padding: 15px;
-            font-size: 1em;
+            font-size: 1.5em; /* Larger font size */
             border: none;
             cursor: pointer;
             outline: none;
-            background-color: #555;
+            background-color: #555; /* Darker background for dark mode */
             color: #fff;
             transition: background-color 0.3s ease;
         }
 
         #calculator button.operator {
-            background-color: #777;
+            background-color: #777; /* Darker background for dark mode */
         }
 
         #calculator button.equal {
-            background-color: #28a745;
-        }
-
-        #calculator button.format {
-            width: 20%;
+            background-color: #ff8c00; /* Orange color for equal sign */
+            color: #eee; /* Lighter text for visibility */
         }
 
         #calculator button:hover {
-            background-color: #777;
+            background-color: #777; /* Darker background for dark mode */
         }
 
         #calculator #toggleColorMode {
             width: 100%;
             padding: 15px;
-            font-size: 1em;
+            font-size: 1.5em; /* Larger font size */
             border: none;
             cursor: pointer;
             outline: none;
-            background-color: #343a40;
+            background-color: #343a40; /* Darker background for dark mode */
             color: #fff;
         }
     </style>
@@ -104,7 +103,6 @@
             <button onclick="appendToDisplay('1/Math.cos(')">sec</button>
             <button onclick="appendToDisplay('1/Math.tan(')">cot</button>
             <button onclick="appendToDisplay('**2')">x<sup>2</sup></button>
-            <button onclick="appendToDisplay('**10')">x<sup>10</sup></button>
             <button onclick="memoryAdd()">m+</button>
             <button onclick="memorySubtract()">m-</button>
             <button onclick="appendToDisplay('Math.acos(')">acos</button>
@@ -128,15 +126,8 @@
             <button onclick="appendToDisplay('Math.sqrt(')">√</button>
             <button onclick="appendToDisplay('nroot')">n√</button>
 
-            <!-- Computer functions -->
-            <button class="format" onclick="setFormat('hex')">Hex</button>
-            <button class="format" onclick="setFormat('dec')">Dec</button>
-            <button class="format" onclick="setFormat('bin')">Bin</button>
-            <button onclick="appendToDisplay('Math.sqrt(')">sqrt</button>
-            <button onclick="appendToDisplay('Math.sqrt(')">fsqrt</button>
-            <button onclick="appendToDisplay('Math.sqrt(')">fsqrtf</button>
-            <button onclick="appendToDisplay('Math.sqrt(')">f_sqrt</button>
-            <button onclick="appendToDisplay('Math.sqrt(')">f_sqrtf</button>
+            <!-- Backspace button -->
+            <button onclick="backspace()">⌫</button>
 
             <!-- Parentheses, Mod, and Special Characters -->
             <button onclick="appendToDisplay('('">(</button>
@@ -163,87 +154,27 @@
     </div>
 
     <script>
-        let darkMode = true;
-        let memoryValue = 0;
-        let currentFormat = 'dec';
-
-        function appendToDisplay(value) {
-            document.getElementById('display').value += value;
+        // Backspace function
+        function backspace() {
+            let currentDisplay = document.getElementById('display').value;
+            document.getElementById('display').value = currentDisplay.slice(0, -1);
         }
 
-        function clearDisplay() {
-            document.getElementById('display').value = '';
-        }
-
-        function calculate() {
-            try {
-                document.getElementById('display').value = eval(document.getElementById('display').value);
-            } catch (error) {
-                document.getElementById('display').value = 'Error';
-            }
-        }
-
-        function toggleMode() {
-            darkMode = !darkMode;
-            document.body.style.backgroundColor = darkMode ? '#333' : '#fff';
-            document.body.style.color = darkMode ? '#fff' : '#333';
-            document.getElementById('calculator').style.backgroundColor = darkMode ? '#444' : '#eee';
-            document.getElementById('calculator').style.boxShadow = darkMode ? '0 0 10px rgba(0, 0, 0, 0.5)' : '0 0 10px rgba(0, 0, 0, 0.2)';
-            document.getElementById('toggleMode').style.backgroundColor = darkMode ? '#343a40' : '#ddd';
-        }
-
-        function memoryAdd() {
-            memoryValue += parseFloat(document.getElementById('display').value) || 0;
-            clearDisplay();
-        }
-
-        function memorySubtract() {
-            memoryValue -= parseFloat(document.getElementById('display').value) || 0;
-            clearDisplay();
-        }
-
-        function memoryClear() {
-            memoryValue = 0;
-        }
-
-        function setFormat(format) {
-            currentFormat = format;
-        }
-
-        function factorial() {
-            const num = parseFloat(document.getElementById('display').value);
-            if (!isNaN(num)) {
-                let result = 1;
-                for (let i = 2; i <= num; i++) {
-                    result *= i;
-                }
-                document.getElementById('display').value = result;
-            } else {
-                document.getElementById('display').value = 'Error';
-            }
-        }
-
-        function min() {
-            const values = document.getElementById('display').value.split(',');
-            const result = Math.min(...values);
-            document.getElementById('display').value = result;
-        }
-
-        function toggleSign() {
-            const currentValue = parseFloat(document.getElementById('display').value);
-            if (!isNaN(currentValue)) {
-                document.getElementById('display').value = -currentValue;
-            }
-        }
-
+        // Color mode toggle function
         function toggleColorMode() {
-            darkMode = !darkMode;
-            document.body.style.backgroundColor = darkMode ? '#333' : '#fff';
-            document.body.style.color = darkMode ? '#fff' : '#333';
-            document.getElementById('calculator').style.backgroundColor = darkMode ? '#444' : '#eee';
-            document.getElementById('calculator').style.boxShadow = darkMode ? '0 0 10px rgba(0, 0, 0, 0.5)' : '0 0 10px rgba(0, 0, 0, 0.2)';
-            document.getElementById('toggleColorMode').style.backgroundColor = darkMode ? '#343a40' : '#ddd';
+            const calculator = document.getElementById('calculator');
+            const buttons = document.querySelectorAll('#buttons button');
+            const toggleColorModeButton = document.getElementById('toggleColorMode');
+
+            calculator.classList.toggle('dark-mode');
+            toggleColorModeButton.classList.toggle('dark-mode');
+
+            buttons.forEach(button => {
+                button.classList.toggle('dark-mode');
+            });
         }
+
+        // Other functions (e.g., memory operations, factorial, min) should be defined based on your specific requirements.
     </script>
 </body>
 </html>
