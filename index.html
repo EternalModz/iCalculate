@@ -214,10 +214,10 @@
                 // Convert input to decimal format before evaluation
                 switch (currentFormat) {
                     case 'hex':
-                        inputValue = parseInt(inputValue, 16).toString(10);
+                        inputValue = parseInt(inputValue, 16);
                         break;
                     case 'bin':
-                        inputValue = parseInt(inputValue, 2).toString(10);
+                        inputValue = parseInt(inputValue, 2);
                         break;
                     // 'dec' format does not need conversion
                 }
@@ -225,13 +225,13 @@
                 // Evaluate the expression
                 let result = eval(inputValue);
 
-                // Convert the result back to the original format
+                // Convert the result to the original format
                 switch (currentFormat) {
                     case 'hex':
-                        result = parseInt(result, 10).toString(16);
+                        result = '0x' + result.toString(16);
                         break;
                     case 'bin':
-                        result = parseInt(result, 10).toString(2);
+                        result = '0b' + result.toString(2);
                         break;
                     // 'dec' format does not need conversion
                 }
