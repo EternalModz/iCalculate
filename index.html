@@ -37,7 +37,7 @@
 
         #buttons {
             display: grid;
-            grid-template-columns: repeat(5, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 10px;
         }
 
@@ -71,70 +71,56 @@
     <div id="calculator">
         <input type="text" id="display" readonly>
         <div id="buttons">
-            <!-- Numeric buttons -->
+            <!-- Numbers -->
             <button onclick="appendToInput('7')">7</button>
             <button onclick="appendToInput('8')">8</button>
             <button onclick="appendToInput('9')">9</button>
-
-            <!-- Basic operators -->
-            <button class="operator" onclick="appendToInput('+')">+</button>
-            <button class="operator" onclick="appendToInput('-')">-</button>
-
-            <!-- Trigonometric functions -->
-            <button onclick="appendToInput('Math.sin(')">sin</button>
-            <button onclick="appendToInput('Math.cos(')">cos</button>
-            <button onclick="appendToInput('Math.tan(')">tan</button>
-
-            <!-- Parentheses and other symbols -->
-            <button onclick="appendToInput('(')">(</button>
-            <button onclick="appendToInput(')')">)</button>
-            <button onclick="appendToInput('%')">%</button>
-
-            <!-- Numeric buttons -->
             <button onclick="appendToInput('4')">4</button>
             <button onclick="appendToInput('5')">5</button>
             <button onclick="appendToInput('6')">6</button>
-
-            <!-- Basic operators -->
-            <button class="operator" onclick="appendToInput('*')">*</button>
-            <button class="operator" onclick="appendToInput('/')">/</button>
-
-            <!-- Exponential and Logarithmic functions -->
-            <button onclick="appendToInput('10**')">10^</button>
-            <button onclick="appendToInput('Math.log(')">log</button>
-            <button onclick="appendToInput('Math.exp(')">exp</button>
-
-            <!-- Numeric buttons -->
             <button onclick="appendToInput('1')">1</button>
             <button onclick="appendToInput('2')">2</button>
             <button onclick="appendToInput('3')">3</button>
-
-            <!-- Other functions -->
-            <button onclick="appendToInput('!')">!</button>
-            <button onclick="appendToInput('Math.sqrt(')">√</button>
+            <button onclick="appendToInput('0')">0</button>
+            <button onclick="appendToInput('.')">.</button>
 
             <!-- Basic operators -->
             <button class="operator" onclick="appendToInput('+')">+</button>
             <button class="operator" onclick="appendToInput('-')">-</button>
+            <button class="operator" onclick="appendToInput('*')">x</button>
+            <button class="operator" onclick="appendToInput('/')">÷</button>
 
-            <!-- Numeric buttons -->
-            <button onclick="appendToInput('0')">0</button>
-            <button onclick="appendToInput('.')">.</button>
-            <button onclick="calculate()">=</button>
+            <!-- Other functions -->
+            <button onclick="appendToInput('Math.sin(')">sin</button>
+            <button onclick="appendToInput('Math.cos(')">cos</button>
+            <button onclick="appendToInput('Math.tan(')">tan</button>
+            <button onclick="appendToInput('1/Math.sin(')">csc</button>
+            <button onclick="appendToInput('1/Math.cos(')">sec</button>
+            <button onclick="appendToInput('1/Math.tan(')">cot</button>
+            <button onclick="appendToInput('**2')">**2</button>
+            <button onclick="appendToInput('**')">**</button>
+            <button onclick="appendToInput('m+')">m+</button>
+            <button onclick="appendToInput('m-')">m-</button>
+            <button onclick="appendToInput('Math.acos(')">acos</button>
+            <button onclick="appendToInput('Math.asin(')">asin</button>
+            <button onclick="appendToInput('Math.atan(')">atan</button>
+            <button onclick="appendToInput('Math.log10(')">log10</button>
+            <button onclick="appendToInput('Math.log2(')">log2</button>
+            <button onclick="appendToInput('Math.log(')">log</button>
+            <button onclick="appendToInput('Math.exp(')">exp</button>
+            <button onclick="appendToInput('10**')">10**</button>
+            <button onclick="appendToInput('2**')">2**</button>
+            <button onclick="appendToInput('Math.round(')">round</button>
+            <button onclick="appendToInput('factorial(')">x!</button>
+            <button onclick="appendToInput('Math.min(')">min</button>
+            <button onclick="appendToInput('Math.exp(')">e^x</button>
+            <button onclick="appendToInput('~')">~</button>
+            <button onclick="appendToInput('Math.re(')">re</button>
+            <button onclick="appendToInput('Math.exp(')">exp</button>
 
-            <!-- Clear and Memory functions -->
-            <button onclick="clear()">AC</button>
-            <button onclick="clearMemory()">MC</button>
-
-            <!-- Other symbols -->
-            <button onclick="appendToInput('1/x')">1/x</button>
-            <button onclick="appendToInput('+/-')">+/-</button>
-
-            <!-- Advanced functions -->
-            <button onclick="appendToInput('Math.degrees(')">deg</button>
-            <button onclick="appendToInput('Math.radians(')">rad</button>
-            <button onclick="appendToInput('Math.PI')">π</button>
-            <button onclick="appendToInput('Math.hypot(')">hyp</button>
+            <!-- Square root functions -->
+            <button onclick="appendToInput('Math.sqrt(')">√</button>
+            <button onclick="appendToInput('nroot')">n√</button>
 
             <!-- Computer functions -->
             <button onclick="appendToInput('bin')">bin</button>
@@ -147,10 +133,23 @@
             <button onclick="appendToInput('Math.sqrt(')">f_sqrtf</button>
 
             <!-- Parentheses, Mod, and Special Characters -->
-            <button onclick="appendToInput('mod')">mod</button>
-            <button onclick="appendToInput('∩')">∩</button>
-            <button onclick="appendToInput('Х~У')">Х~У</button>
-            <button onclick="appendToInput('亠')">亠</button>
+            <button onclick="appendToInput('('">(</button>
+            <button onclick="appendToInput(')')">)</button>
+            <button onclick="appendToInput('%')">%</button>
+
+            <!-- Constants and special symbols -->
+            <button onclick="clear()">C</button>
+            <button onclick="clearMemory()">MC</button>
+            <button onclick="clearAll()">AC</button>
+            <button onclick="toggleSign()">+/-</button>
+            <button onclick="appendToInput('Math.degrees(')">deg</button>
+            <button onclick="appendToInput('Math.radians(')">rad</button>
+            <button onclick="appendToInput('Math.PI')">π</button>
+            <button onclick="appendToInput('Math.hypot(')">hyp</button>
+            <button onclick="appendToInput('1/Math(')">1/x</button>
+
+            <!-- Equal sign -->
+            <button class="operator" onclick="calculate()">=</button>
         </div>
     </div>
 
@@ -175,8 +174,9 @@
 
             function calculate() {
                 try {
-                    // Evaluate the expression
-                    currentInput = eval(currentInput).toString();
+                    // Use Function constructor for safer evaluation
+                    const result = Function('"use strict";return (' + currentInput + ')')();
+                    currentInput = result.toString();
                     updateDisplay();
                 } catch (error) {
                     currentInput = "Error";
@@ -185,42 +185,26 @@
             }
 
             function clearMemory() {
-                // Functionality to clear memory
+                currentInput = "";
+                updateDisplay();
             }
 
-            // Attach click event listeners to all buttons
-            const buttons = document.querySelectorAll('#buttons button');
-            buttons.forEach(button => {
-                button.addEventListener('click', function () {
-                    const buttonText = this.innerText;
-                    switch (buttonText) {
-                        case 'AC':
-                            clear();
-                            break;
-                        case '=':
-                            calculate();
-                            break;
-                        default:
-                            appendToInput(buttonText);
-                            break;
-                    }
-                });
-            });
+            function clearAll() {
+                currentInput = "";
+                updateDisplay();
+            }
 
-            // Attach keypress event listener for additional input method
-            document.addEventListener('keypress', function (event) {
-                const key = event.key;
-                if (key.match(/[0-9+\-*/().=!%^]/)) {
-                    // Only allow valid keys for the calculator
-                    if (key === '=') {
-                        calculate();
+            function toggleSign() {
+                if (currentInput !== "") {
+                    const lastChar = currentInput[currentInput.length - 1];
+                    if (lastChar === '-') {
+                        currentInput = currentInput.slice(0, -1);
                     } else {
-                        appendToInput(key);
+                        currentInput += '-';
                     }
-                } else if (key === 'Enter') {
-                    calculate(); // Allow Enter key for calculation
+                    updateDisplay();
                 }
-            });
+            }
         });
     </script>
 </body>
