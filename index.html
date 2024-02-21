@@ -43,7 +43,7 @@
         #calculator #buttons {
             width: 100%;
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 10px;
             padding: 10px;
         }
@@ -78,11 +78,14 @@
 
         #sidebar {
             width: 20%;
+            height: 100%;
             background-color: #555;
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 20px;
+            position: fixed;
+            right: 0;
         }
 
         #converter {
@@ -103,29 +106,38 @@
     <div id="calculator" class="dark-mode">
         <input type="text" id="display" readonly class="dark-mode">
         <div id="buttons" class="dark-mode">
-            <!-- Numbers and Basic Operators -->
+            <!-- Row 1 -->
             <button onclick="appendToDisplay('7')">7</button>
             <button onclick="appendToDisplay('8')">8</button>
             <button onclick="appendToDisplay('9')">9</button>
-            <button onclick="appendToDisplay('/')">÷</button>
+            <button class="operator" onclick="appendToDisplay('/')">÷</button>
+
+            <!-- Row 2 -->
             <button onclick="appendToDisplay('4')">4</button>
             <button onclick="appendToDisplay('5')">5</button>
             <button onclick="appendToDisplay('6')">6</button>
-            <button onclick="appendToDisplay('*')">x</button>
+            <button class="operator" onclick="appendToDisplay('*')">x</button>
+
+            <!-- Row 3 -->
             <button onclick="appendToDisplay('1')">1</button>
             <button onclick="appendToDisplay('2')">2</button>
             <button onclick="appendToDisplay('3')">3</button>
-            <button onclick="appendToDisplay('-')">-</button>
+            <button class="operator" onclick="appendToDisplay('-')">-</button>
+
+            <!-- Row 4 -->
             <button onclick="appendToDisplay('0')">0</button>
             <button onclick="appendToDisplay('.')">.</button>
-            <button onclick="appendToDisplay('+')">+</button>
+            <button class="operator" onclick="appendToDisplay('+')">+</button>
+            <button class="operator equal" onclick="calculate()">=</button>
 
-            <!-- Other functions -->
+            <!-- Row 5 -->
             <button onclick="appendToDisplay('Math.sin(')">sin</button>
             <button onclick="appendToDisplay('Math.cos(')">cos</button>
             <button onclick="appendToDisplay('Math.tan(')">tan</button>
             <button onclick="appendToDisplay('1/Math.sin(')">csc</button>
             <button onclick="appendToDisplay('1/Math.cos(')">sec</button>
+
+            <!-- Additional buttons -->
             <button onclick="appendToDisplay('1/Math.tan(')">cot</button>
             <button onclick="appendToDisplay('**2')">x<sup>2</sup></button>
             <button onclick="appendToDisplay('**10')">x<sup>10</sup></button>
@@ -177,9 +189,6 @@
             <button onclick="appendToDisplay('Math.PI')">π</button>
             <button onclick="appendToDisplay('Math.hypot(')">hyp</button>
             <button onclick="appendToDisplay('1/Math(')">1/x</button>
-
-            <!-- Equal sign -->
-            <button class="operator equal" onclick="calculate()">=</button>
         </div>
     </div>
 
@@ -212,6 +221,7 @@
             } catch (error) {
                 document.getElementById('display').value = 'Error';
             }
+            convertAll();
         }
 
         function memoryAdd() {
