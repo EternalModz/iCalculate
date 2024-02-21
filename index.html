@@ -109,6 +109,12 @@
             <button onclick="appendToInput('e<sup>x</sup>')">e<sup>x</sup></button>
             <button onclick="appendToInput('10<sup>x</sup>')">10<sup>x</sup></button>
             <button onclick="appendToInput('2<sup>x</sup>')">2<sup>x</sup></button>
+            <button onclick="appendToInput('round')">round</button>
+            <button onclick="appendToInput('x!')">x!</button>
+            <button onclick="appendToInput('min')">min</button>
+            <button onclick="appendToInput('10<sup>x</sup>')">10<sup>x</sup></button>
+            <button onclick="appendToInput('2<sup>x</sup>')">2<sup>x</sup></button>
+            <button onclick="appendToInput('e<sup>x</sup>')">e<sup>x</sup></button>
             <button onclick="appendToInput('x~m')">x~m</button>
             <button onclick="appendToInput('m re')">m re</button>
             <button onclick="appendToInput('exp')">exp</button>
@@ -117,6 +123,22 @@
             <button onclick="appendToInput('('">(</button>
             <button onclick="appendToInput(')')">)</button>
             <button onclick="appendToInput('mod')">mod</button>
+
+            <!-- Constants and special symbols -->
+            <button onclick="appendToInput('dec')">dec</button>
+            <button onclick="appendToInput('hex')">hex</button>
+            <button onclick="appendToInput('oct')">oct</button>
+            <button onclick="appendToInput('bin')">bin</button>
+            <button onclick="appendToInput('Х~У')">Х~У</button>
+            <button onclick="clear()">C</button>
+            <button onclick="clearMemory()">MC</button>
+            <button onclick="clearAll()">AC</button>
+            <button onclick="toggleSign()">+/-</button>
+            <button onclick="appendToInput('deg')">></button>
+            <button onclick="appendToInput('rad')">rad</button>
+            <button onclick="appendToInput('π')">π</button>
+            <button onclick="appendToInput('hyp')">hyp</button>
+            <button onclick="appendToInput('1/x')">1/x</button>
 
             <!-- Equal sign -->
             <button class="operator" onclick="calculate()">=</button>
@@ -151,6 +173,18 @@
                     currentInput = "Error";
                     updateDisplay();
                 }
+            }
+
+            function clearMemory() {
+                // Functionality to clear memory
+            }
+
+            function clearAll() {
+                // Functionality to clear all
+            }
+
+            function toggleSign() {
+                // Functionality to toggle sign
             }
         });
     </script>
