@@ -100,8 +100,8 @@
         <input type="text" id="display" readonly class="dark-mode">
         <div id="buttons" class="dark-mode">
             <!-- Top Row: AC, C, and others -->
+            <button onclick="backspace()">←</button>
             <button onclick="clearAll()">AC</button>
-            <button onclick="clearDisplay()">C</button>
             <button onclick="toggleSign()">+/-</button>
             <button onclick="appendToDisplay('%')">%</button>
 
@@ -146,7 +146,13 @@
             convertAll();
         }
 
-        function clearDisplay() {
+        function backspace() {
+            const currentValue = document.getElementById('display').value;
+            document.getElementById('display').value = currentValue.slice(0, -1);
+            convertAll();
+        }
+
+        function clearAll() {
             document.getElementById('display').value = '';
             convertAll();
         }
@@ -161,16 +167,24 @@
 
         function memoryAdd() {
             memoryValue += parseFloat(document.getElementById('display').value) || 0;
-            clearDisplay();
+            clearAll();
         }
 
         function memorySubtract() {
             memoryValue -= parseFloat(document.getElementById('display').value) || 0;
-            clearDisplay();
+            clearAll();
         }
 
         function memoryClear() {
             memoryValue = 0;
+        }
+
+        function toggleSign() {
+            const currentValue = parseFloat(document.getElementById('display').value);
+            if (!isNaN(currentValue)) {
+                document.getElementById('display').value = -currentValue;
+                convertAll();
+            }
         }
 
         function setFormat(format) {
@@ -197,14 +211,6 @@
             const result = Math.min(...values);
             document.getElementById('display').value = result;
             convertAll();
-        }
-
-        function toggleSign() {
-            const currentValue = parseFloat(document.getElementById('display').value);
-            if (!isNaN(currentValue)) {
-                document.getElementById('display').value = -currentValue;
-                convertAll();
-            }
         }
 
         function convert(format) {
