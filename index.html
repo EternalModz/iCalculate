@@ -57,6 +57,11 @@
             background-color: #00f;
         }
 
+        #buttons button sup {
+            font-size: 0.7em;
+            vertical-align: super;
+        }
+
         #buttons button:active {
             background-color: #555;
         }
@@ -92,22 +97,19 @@
             <button onclick="appendToInput('csc')">csc</button>
             <button onclick="appendToInput('sec')">sec</button>
             <button onclick="appendToInput('cot')">cot</button>
-            <button onclick="appendToInput('x^2')">x^2</button>
-            <button onclick="appendToInput('x^n')">x^n</button>
+            <button onclick="appendToInput('x<sup>2</sup>')">x<sup>2</sup></button>
+            <button onclick="appendToInput('x<sup>n</sup>')">x<sup>n</sup></button>
             <button onclick="appendToInput('m+')">m+</button>
             <button onclick="appendToInput('m-')">m-</button>
-            <button onclick="appendToInput('cos-1')">cos-1</button>
-            <button onclick="appendToInput('sin-1')">sin-1</button>
-            <button onclick="appendToInput('tan-1')">tan-1</button>
-            <button onclick="appendToInput('log10')">log10</button>
-            <button onclick="appendToInput('log2')">log2</button>
+            <button onclick="appendToInput('cos<sup>-1</sup>')">cos<sup>-1</sup></button>
+            <button onclick="appendToInput('sin<sup>-1</sup>')">sin<sup>-1</sup></button>
+            <button onclick="appendToInput('tan<sup>-1</sup>')">tan<sup>-1</sup></button>
+            <button onclick="appendToInput('log<sub>10</sub>')">log<sub>10</sub></button>
+            <button onclick="appendToInput('log<sub>2</sub>')">log<sub>2</sub></button>
             <button onclick="appendToInput('loge')">loge</button>
-            <button onclick="appendToInput('round')">round</button>
-            <button onclick="appendToInput('x!')">x!</button>
-            <button onclick="appendToInput('min')">min</button>
-            <button onclick="appendToInput('10^')">10^</button>
-            <button onclick="appendToInput('2^')">2^</button>
-            <button onclick="appendToInput('e^x')">e^x</button>
+            <button onclick="appendToInput('10<sup>x</sup>')">10<sup>x</sup></button>
+            <button onclick="appendToInput('2<sup>x</sup>')">2<sup>x</sup></button>
+            <button onclick="appendToInput('e<sup>x</sup>')">e<sup>x</sup></button>
             <button onclick="appendToInput('x~m')">x~m</button>
             <button onclick="appendToInput('m re')">m re</button>
             <button onclick="appendToInput('exp')">exp</button>
