@@ -36,7 +36,7 @@
 
         #buttons {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             gap: 10px;
         }
 
@@ -54,6 +54,7 @@
         button.operator {
             background-color: #ff9900; /* Operator button background color */
             color: #222; /* Operator button text color */
+            grid-row: span 2;
         }
 
         button.equal {
@@ -99,44 +100,45 @@
     <div id="calculator" class="dark-mode">
         <input type="text" id="display" readonly class="dark-mode">
         <div id="buttons" class="dark-mode">
-            <!-- Operators on the left -->
+            <!-- Orange buttons on the left -->
             <button class="operator" onclick="clearAll()">AC</button>
-            <button class="operator" onclick="toggleSign()">+/-</button>
-            <button class="operator" onclick="backspace()">←</button>
-            <button class="operator" onclick="appendToInput('/')">÷</button>
+            <button class="operator" onclick="appendToInput('Math.sqrt(')">√</button>
+            <button class="operator" onclick="appendToInput('nroot')">n√</button>
+            <button class="operator" onclick="appendToInput('1/Math(')">1/x</button>
+            <button class="operator" onclick="appendToInput('Math.PI')">π</button>
 
-            <!-- Other operators and numbers in a 3x3 grid -->
-            <button class="operator" onclick="appendToInput('*')">*</button>
+            <!-- Numbers in 3x3 grouping -->
             <button onclick="appendToInput('7')">7</button>
             <button onclick="appendToInput('8')">8</button>
             <button onclick="appendToInput('9')">9</button>
+            <button class="operator" onclick="appendToInput('/')">÷</button>
 
-            <button class="operator" onclick="appendToInput('-')">-</button>
             <button onclick="appendToInput('4')">4</button>
             <button onclick="appendToInput('5')">5</button>
             <button onclick="appendToInput('6')">6</button>
+            <button class="operator" onclick="appendToInput('*')">×</button>
 
-            <button class="operator" onclick="appendToInput('+')">+</button>
             <button onclick="appendToInput('1')">1</button>
             <button onclick="appendToInput('2')">2</button>
             <button onclick="appendToInput('3')">3</button>
+            <button class="operator" onclick="appendToInput('-')">-</button>
 
-            <!-- Bottom row with 0 and dot -->
-            <button class="operator equal" onclick="calculate()">=</button>
             <button onclick="appendToInput('0')">0</button>
             <button onclick="appendToInput('.')">.</button>
+            <button class="equal" onclick="calculate()">=</button>
+            <button class="operator" onclick="appendToInput('+')">+</button>
 
-            <!-- Additional operators -->
-            <button class="operator" onclick="appendToInput('**')">x<sup>2</sup></button>
+            <!-- Additional operations on the left -->
+            <button class="operator" onclick="appendToInput('**2')">x<sup>2</sup></button>
             <button class="operator" onclick="appendToInput('**')">x<sup>10</sup></button>
             <button class="operator" onclick="appendToInput('m+')">m+</button>
             <button class="operator" onclick="appendToInput('m-')">m-</button>
             <button class="operator" onclick="appendToInput('Math.acos(')">acos</button>
             <button class="operator" onclick="appendToInput('Math.asin(')">asin</button>
             <button class="operator" onclick="appendToInput('Math.atan(')">atan</button>
-            <button class="operator" onclick="appendToInput('Math.log10(')">log10</button>
-            <button class="operator" onclick="appendToInput('Math.log2(')">log2</button>
-            <button class="operator" onclick="appendToInput('Math.log(')">log</button>
+            <button class="operator" onclick="appendToInput('Math.log10(')">log<sub>10</sub></button>
+            <button class="operator" onclick="appendToInput('Math.log2(')">log<sub>2</sub></button>
+            <button class="operator" onclick="appendToInput('Math.log(')">log<sub>e</sub></button>
             <button class="operator" onclick="appendToInput('Math.exp(')">exp</button>
             <button class="operator" onclick="appendToInput('10**')">10<sup>x</sup></button>
             <button class="operator" onclick="appendToInput('2**')">2<sup>x</sup></button>
@@ -148,24 +150,6 @@
             <button class="operator" onclick="appendToInput('Math.re(')">re</button>
             <button class="operator" onclick="appendToInput('Math.exp(')">exp</button>
 
-            <!-- Square root functions -->
-            <button class="operator" onclick="appendToInput('Math.sqrt(')">√</button>
-            <button class="operator" onclick="appendToInput('nroot')">n√</button>
-
-            <!-- Computer functions -->
-            <button class="operator" onclick="appendToInput('bin')">bin</button>
-            <button class="operator" onclick="appendToInput('dec')">dec</button>
-            <button class="operator" onclick="appendToInput('hex')">hex</button>
-            <button class="operator" onclick="appendToInput('Math.sqrt(')">sqrt</button>
-            <button class="operator" onclick="appendToInput('Math.sqrt(')">fsqrt</button>
-            <button class="operator" onclick="appendToInput('Math.sqrt(')">fsqrtf</button>
-            <button class="operator" onclick="appendToInput('Math.sqrt(')">f_sqrt</button>
-            <button class="operator" onclick="appendToInput('Math.sqrt(')">f_sqrtf</button>
-
-            <!-- Parentheses, Mod, and Special Characters -->
-            <button class="operator" onclick="appendToInput('('">(</button>
-            <button class="operator" onclick="appendToInput(')')">)</button>
-            <button class="operator" onclick="appendToInput('%')">%</button>
         </div>
     </div>
 
@@ -187,14 +171,6 @@
 
         function clearAll() {
             display.value = '';
-        }
-
-        function toggleSign() {
-            display.value = -parseFloat(display.value);
-        }
-
-        function backspace() {
-            display.value = display.value.slice(0, -1);
         }
 
         // Add other functions as needed
