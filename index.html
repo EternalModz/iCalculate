@@ -5,110 +5,244 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <style>
-        /* Your styles from the provided code go here */
-
-        /* Additional styles from the new code */
-        button.format.light-mode {
-            background-color: #0088cc; /* Format button background color in light mode */
-            color: #fff; /* Format button text color in light mode */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #333;
         }
 
-        /* Additional light mode styles */
-        body.light-mode {
-            background-color: #f2f2f2;
-            color: #333;
+        #calculator {
+            background-color: #444;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         }
 
-        #calculator.light-mode {
-            background-color: #fff;
-            border: 1px solid #ccc;
+        #calculator input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1.5em;
+            border: none;
+            outline: none;
+            background-color: #444;
+            color: #fff;
         }
 
-        #display.light-mode {
-            background-color: #f9f9f9;
-            color: #333;
+        #calculator button {
+            width: 20%;
+            padding: 15px;
+            font-size: 1em;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            background-color: #555;
+            color: #fff;
+            transition: background-color 0.3s ease;
         }
 
-        button.light-mode {
-            background-color: #f9f9f9;
-            color: #333;
-            border: 1px solid #ccc;
+        #calculator button.operator {
+            background-color: #777;
         }
 
-        button.operator.light-mode {
-            background-color: #ff9900;
+        #calculator button.equal {
+            background-color: #28a745;
+        }
+
+        #calculator button.format {
+            width: 20%;
+        }
+
+        #calculator button:hover {
+            background-color: #777;
+        }
+
+        #calculator #toggleColorMode {
+            width: 100%;
+            padding: 15px;
+            font-size: 1em;
+            border: none;
+            cursor: pointer;
+            outline: none;
+            background-color: #343a40;
             color: #fff;
         }
     </style>
 </head>
 <body class="dark-mode">
-    <!-- Your HTML content from the provided code goes here -->
+    <div id="calculator" class="dark-mode">
+        <input type="text" id="display" readonly class="dark-mode">
+        <div id="buttons" class="dark-mode">
+            <!-- Numbers -->
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+
+            <!-- Basic operators -->
+            <button class="operator" onclick="appendToDisplay('+')">+</button>
+            <button class="operator" onclick="appendToDisplay('-')">-</button>
+            <button class="operator" onclick="appendToDisplay('*')">x</button>
+            <button class="operator" onclick="appendToDisplay('/')">÷</button>
+
+            <!-- Other functions -->
+            <button onclick="appendToDisplay('Math.sin(')">sin</button>
+            <button onclick="appendToDisplay('Math.cos(')">cos</button>
+            <button onclick="appendToDisplay('Math.tan(')">tan</button>
+            <button onclick="appendToDisplay('1/Math.sin(')">csc</button>
+            <button onclick="appendToDisplay('1/Math.cos(')">sec</button>
+            <button onclick="appendToDisplay('1/Math.tan(')">cot</button>
+            <button onclick="appendToDisplay('**2')">x<sup>2</sup></button>
+            <button onclick="appendToDisplay('**10')">x<sup>10</sup></button>
+            <button onclick="memoryAdd()">m+</button>
+            <button onclick="memorySubtract()">m-</button>
+            <button onclick="appendToDisplay('Math.acos(')">acos</button>
+            <button onclick="appendToDisplay('Math.asin(')">asin</button>
+            <button onclick="appendToDisplay('Math.atan(')">atan</button>
+            <button onclick="appendToDisplay('Math.log10(')">log<sub>10</sub></button>
+            <button onclick="appendToDisplay('Math.log2(')">log<sub>2</sub></button>
+            <button onclick="appendToDisplay('Math.log(')">log<sub>e</sub></button>
+            <button onclick="appendToDisplay('Math.exp(')">exp</button>
+            <button onclick="appendToDisplay('**10')">10<sup>x</sup></button>
+            <button onclick="appendToDisplay('**2')">2<sup>x</sup></button>
+            <button onclick="appendToDisplay('Math.round(')">round</button>
+            <button onclick="factorial()">x!</button>
+            <button onclick="min()">min</button>
+            <button onclick="appendToDisplay('Math.exp(')">e<sup>x</sup></button>
+            <button onclick="appendToDisplay('~')">~</button>
+            <button onclick="appendToDisplay('Math.re(')">re</button>
+            <button onclick="appendToDisplay('Math.exp(')">exp</button>
+
+            <!-- Square root functions -->
+            <button onclick="appendToDisplay('Math.sqrt(')">√</button>
+            <button onclick="appendToDisplay('nroot')">n√</button>
+
+            <!-- Computer functions -->
+            <button class="format" onclick="setFormat('hex')">Hex</button>
+            <button class="format" onclick="setFormat('dec')">Dec</button>
+            <button class="format" onclick="setFormat('bin')">Bin</button>
+            <button onclick="appendToDisplay('Math.sqrt(')">sqrt</button>
+            <button onclick="appendToDisplay('Math.sqrt(')">fsqrt</button>
+            <button onclick="appendToDisplay('Math.sqrt(')">fsqrtf</button>
+            <button onclick="appendToDisplay('Math.sqrt(')">f_sqrt</button>
+            <button onclick="appendToDisplay('Math.sqrt(')">f_sqrtf</button>
+
+            <!-- Parentheses, Mod, and Special Characters -->
+            <button onclick="appendToDisplay('('">(</button>
+            <button onclick="appendToDisplay(')')">)</button>
+            <button onclick="appendToDisplay('%')">%</button>
+
+            <!-- Constants and special symbols -->
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="memoryClear()">MC</button>
+            <button onclick="clearAll()">AC</button>
+            <button onclick="toggleSign()">+/-</button>
+            <button onclick="appendToDisplay('Math.degrees(')">deg</button>
+            <button onclick="appendToDisplay('Math.radians(')">rad</button>
+            <button onclick="appendToDisplay('Math.PI')">π</button>
+            <button onclick="appendToDisplay('Math.hypot(')">hyp</button>
+            <button onclick="appendToDisplay('1/Math(')">1/x</button>
+
+            <!-- Equal sign -->
+            <button class="operator equal" onclick="calculate()">=</button>
+
+            <!-- Color mode toggle button -->
+            <button id="toggleColorMode" onclick="toggleColorMode()">Toggle Color Mode</button>
+        </div>
+    </div>
 
     <script>
-        // Your JavaScript code from the provided code goes here
+        let darkMode = true;
+        let memoryValue = 0;
+        let currentFormat = 'dec';
 
-        // Additional JavaScript code for the new functionalities
-        function toggleSign() {
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculate() {
             try {
-                let inputValue = display.value;
-
-                // Check if the display includes the format, and remove it
-                if (display.value.includes(currentFormat.toUpperCase() + ":")) {
-                    inputValue = inputValue.slice(currentFormat.length + 2);
-                }
-
-                // Toggle the sign of the expression
-                let result = eval(inputValue) * -1;
-
-                // Convert the result to the original format
-                switch (currentFormat) {
-                    case 'hex':
-                        result = '0x' + result.toString(16).toUpperCase();
-                        break;
-                    case 'bin':
-                        result = '0b' + result.toString(2);
-                        break;
-                    // 'dec' format does not need conversion
-                }
-
-                // Display the result with the current format
-                display.value = currentFormat.toUpperCase() + ": " + result;
+                document.getElementById('display').value = eval(document.getElementById('display').value);
             } catch (error) {
-                display.value = 'Error';
+                document.getElementById('display').value = 'Error';
             }
         }
 
-        function nroot() {
-            try {
-                let inputValue = display.value;
+        function toggleMode() {
+            darkMode = !darkMode;
+            document.body.style.backgroundColor = darkMode ? '#333' : '#fff';
+            document.body.style.color = darkMode ? '#fff' : '#333';
+            document.getElementById('calculator').style.backgroundColor = darkMode ? '#444' : '#eee';
+            document.getElementById('calculator').style.boxShadow = darkMode ? '0 0 10px rgba(0, 0, 0, 0.5)' : '0 0 10px rgba(0, 0, 0, 0.2)';
+            document.getElementById('toggleMode').style.backgroundColor = darkMode ? '#343a40' : '#ddd';
+        }
 
-                // Check if the display includes the format, and remove it
-                if (display.value.includes(currentFormat.toUpperCase() + ":")) {
-                    inputValue = inputValue.slice(currentFormat.length + 2);
+        function memoryAdd() {
+            memoryValue += parseFloat(document.getElementById('display').value) || 0;
+            clearDisplay();
+        }
+
+        function memorySubtract() {
+            memoryValue -= parseFloat(document.getElementById('display').value) || 0;
+            clearDisplay();
+        }
+
+        function memoryClear() {
+            memoryValue = 0;
+        }
+
+        function setFormat(format) {
+            currentFormat = format;
+        }
+
+        function factorial() {
+            const num = parseFloat(document.getElementById('display').value);
+            if (!isNaN(num)) {
+                let result = 1;
+                for (let i = 2; i <= num; i++) {
+                    result *= i;
                 }
-
-                // Prompt the user for the root value
-                let rootValue = prompt("Enter the root value:");
-
-                // Calculate the nth root of the expression
-                let result = Math.pow(eval(inputValue), 1 / parseFloat(rootValue));
-
-                // Convert the result to the original format
-                switch (currentFormat) {
-                    case 'hex':
-                        result = '0x' + result.toString(16).toUpperCase();
-                        break;
-                    case 'bin':
-                        result = '0b' + result.toString(2);
-                        break;
-                    // 'dec' format does not need conversion
-                }
-
-                // Display the result with the current format
-                display.value = currentFormat.toUpperCase() + ": " + result;
-            } catch (error) {
-                display.value = 'Error';
+                document.getElementById('display').value = result;
+            } else {
+                document.getElementById('display').value = 'Error';
             }
+        }
+
+        function min() {
+            const values = document.getElementById('display').value.split(',');
+            const result = Math.min(...values);
+            document.getElementById('display').value = result;
+        }
+
+        function toggleSign() {
+            const currentValue = parseFloat(document.getElementById('display').value);
+            if (!isNaN(currentValue)) {
+                document.getElementById('display').value = -currentValue;
+            }
+        }
+
+        function toggleColorMode() {
+            darkMode = !darkMode;
+            document.body.style.backgroundColor = darkMode ? '#333' : '#fff';
+            document.body.style.color = darkMode ? '#fff' : '#333';
+            document.getElementById('calculator').style.backgroundColor = darkMode ? '#444' : '#eee';
+            document.getElementById('calculator').style.boxShadow = darkMode ? '0 0 10px rgba(0, 0, 0, 0.5)' : '0 0 10px rgba(0, 0, 0, 0.2)';
+            document.getElementById('toggleColorMode').style.backgroundColor = darkMode ? '#343a40' : '#ddd';
         }
     </script>
 </body>
