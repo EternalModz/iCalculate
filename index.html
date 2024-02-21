@@ -24,25 +24,28 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            width: 80%;
+            max-width: 400px;
         }
 
         #calculator input {
-            width: 80%;
+            width: 100%;
             margin: 10px;
             padding: 15px;
             font-size: 1.8em;
             border: none;
             outline: none;
-            background-color: #444;
+            background-color: #555;
             color: #fff;
             text-align: right;
         }
 
         #calculator #buttons {
-            width: 80%;
+            width: 100%;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 10px;
+            padding: 10px;
         }
 
         #calculator button {
@@ -53,6 +56,7 @@
             cursor: pointer;
             outline: none;
             color: #fff;
+            background-color: #555;
             transition: background-color 0.3s ease;
         }
 
@@ -70,17 +74,6 @@
 
         #calculator button:hover {
             background-color: #777;
-        }
-
-        #calculator #toggleColorMode {
-            width: 100%;
-            padding: 20px;
-            font-size: 1.2em;
-            border: none;
-            cursor: pointer;
-            outline: none;
-            background-color: #343a40;
-            color: #fff;
         }
 
         #sidebar {
@@ -114,20 +107,18 @@
             <button onclick="appendToDisplay('7')">7</button>
             <button onclick="appendToDisplay('8')">8</button>
             <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('/')">÷</button>
             <button onclick="appendToDisplay('4')">4</button>
             <button onclick="appendToDisplay('5')">5</button>
             <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('*')">x</button>
             <button onclick="appendToDisplay('1')">1</button>
             <button onclick="appendToDisplay('2')">2</button>
             <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('-')">-</button>
             <button onclick="appendToDisplay('0')">0</button>
             <button onclick="appendToDisplay('.')">.</button>
-
-            <!-- Basic operators -->
-            <button class="operator" onclick="appendToDisplay('-')">-</button>
-            <button class="operator" onclick="appendToDisplay('*')">x</button>
-            <button class="operator" onclick="appendToDisplay('/')">÷</button>
-            <button class="operator" onclick="appendToDisplay('+')">+</button>
+            <button onclick="appendToDisplay('+')">+</button>
 
             <!-- Other functions -->
             <button onclick="appendToDisplay('Math.sin(')">sin</button>
@@ -189,9 +180,6 @@
 
             <!-- Equal sign -->
             <button class="operator equal" onclick="calculate()">=</button>
-
-            <!-- Color mode toggle button -->
-            <button id="toggleColorMode" onclick="toggleColorMode()">Toggle Color Mode</button>
         </div>
     </div>
 
@@ -205,7 +193,6 @@
     </div>
 
     <script>
-        let darkMode = true;
         let memoryValue = 0;
         let currentFormat = 'dec';
 
@@ -225,15 +212,6 @@
             } catch (error) {
                 document.getElementById('display').value = 'Error';
             }
-        }
-
-        function toggleMode() {
-            darkMode = !darkMode;
-            document.body.style.backgroundColor = darkMode ? '#333' : '#fff';
-            document.body.style.color = darkMode ? '#fff' : '#333';
-            document.getElementById('calculator').style.backgroundColor = darkMode ? '#444' : '#eee';
-            document.getElementById('calculator').style.boxShadow = darkMode ? '0 0 10px rgba(0, 0, 0, 0.5)' : '0 0 10px rgba(0, 0, 0, 0.2)';
-            document.getElementById('toggleMode').style.backgroundColor = darkMode ? '#343a40' : '#ddd';
         }
 
         function memoryAdd() {
@@ -282,15 +260,6 @@
                 document.getElementById('display').value = -currentValue;
                 convertAll();
             }
-        }
-
-        function toggleColorMode() {
-            darkMode = !darkMode;
-            document.body.style.backgroundColor = darkMode ? '#333' : '#fff';
-            document.body.style.color = darkMode ? '#fff' : '#333';
-            document.getElementById('calculator').style.backgroundColor = darkMode ? '#444' : '#eee';
-            document.getElementById('calculator').style.boxShadow = darkMode ? '0 0 10px rgba(0, 0, 0, 0.5)' : '0 0 10px rgba(0, 0, 0, 0.2)';
-            document.getElementById('toggleColorMode').style.backgroundColor = darkMode ? '#343a40' : '#ddd';
         }
 
         function convert(format) {
