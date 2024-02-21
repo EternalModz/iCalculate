@@ -155,9 +155,9 @@
             <button onclick="appendToInput('nroot')">n√</button>
 
             <!-- Computer functions -->
-            <button class="format" onclick="setFormat('hex')">hex</button>
-            <button class="format" onclick="setFormat('dec')">dec</button>
-            <button class="format" onclick="setFormat('bin')">bin</button>
+            <button class="format" onclick="setFormat('hex')">Hex</button>
+            <button class="format" onclick="setFormat('dec')">Dec</button>
+            <button class="format" onclick="setFormat('bin')">Bin</button>
             <button onclick="appendToInput('Math.sqrt(')">sqrt</button>
             <button onclick="appendToInput('Math.sqrt(')">fsqrt</button>
             <button onclick="appendToInput('Math.sqrt(')">fsqrtf</button>
@@ -194,12 +194,22 @@
         let currentFormat = 'dec'; // Default format
 
         function appendToInput(value) {
+            // If the display already shows the current format, remove it before appending
+            if (display.value.includes(currentFormat.toUpperCase() + ":")) {
+                display.value = display.value.slice(currentFormat.length + 1);
+            }
+
             display.value += value;
         }
 
         function calculate() {
             try {
                 let inputValue = display.value;
+
+                // Check if the display includes the format, and remove it
+                if (display.value.includes(currentFormat.toUpperCase() + ":")) {
+                    inputValue = inputValue.slice(currentFormat.length + 1);
+                }
 
                 // Convert input to decimal format before evaluation
                 switch (currentFormat) {
@@ -213,18 +223,21 @@
                 }
 
                 // Evaluate the expression
-                display.value = eval(inputValue);
+                let result = eval(inputValue);
 
                 // Convert the result back to the original format
                 switch (currentFormat) {
                     case 'hex':
-                        display.value = parseInt(display.value, 10).toString(16);
+                        result = parseInt(result, 10).toString(16);
                         break;
                     case 'bin':
-                        display.value = parseInt(display.value, 10).toString(2);
+                        result = parseInt(result, 10).toString(2);
                         break;
                     // 'dec' format does not need conversion
                 }
+
+                // Display the result with the current format
+                display.value = currentFormat.toUpperCase() + ": " + result;
             } catch (error) {
                 display.value = 'Error';
             }
@@ -247,8 +260,7 @@
 
         function setFormat(format) {
             currentFormat = format;
-            display.value = ''; // Clear the display when changing format
-            alert('Format selected: ' + format); // Show a simple alert for demonstration
+            display.value = format.toUpperCase() + ": ";
         }
     </script>
 </body>
