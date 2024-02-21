@@ -199,22 +199,23 @@
 
         function calculate() {
             try {
-                // Check the current format and convert accordingly
+                let inputValue = display.value;
+
+                // Convert input to decimal format before evaluation
                 switch (currentFormat) {
                     case 'hex':
-                        display.value = parseInt(display.value, 16).toString(10);
+                        inputValue = parseInt(inputValue, 16).toString(10);
                         break;
                     case 'bin':
-                        display.value = parseInt(display.value, 2).toString(10);
+                        inputValue = parseInt(inputValue, 2).toString(10);
                         break;
-                    case 'dec':
-                        // No conversion needed for decimal format
-                        break;
+                    // 'dec' format does not need conversion
                 }
 
-                display.value = eval(display.value);
+                // Evaluate the expression
+                display.value = eval(inputValue);
 
-                // Convert back to the original format
+                // Convert the result back to the original format
                 switch (currentFormat) {
                     case 'hex':
                         display.value = parseInt(display.value, 10).toString(16);
@@ -222,9 +223,7 @@
                     case 'bin':
                         display.value = parseInt(display.value, 10).toString(2);
                         break;
-                    case 'dec':
-                        // No conversion needed for decimal format
-                        break;
+                    // 'dec' format does not need conversion
                 }
             } catch (error) {
                 display.value = 'Error';
@@ -249,6 +248,7 @@
         function setFormat(format) {
             currentFormat = format;
             display.value = ''; // Clear the display when changing format
+            alert('Format selected: ' + format); // Show a simple alert for demonstration
         }
     </script>
 </body>
