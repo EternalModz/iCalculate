@@ -75,81 +75,243 @@
             <button onclick="appendToInput('7')">7</button>
             <button onclick="appendToInput('8')">8</button>
             <button onclick="appendToInput('9')">9</button>
+            <button class="operator" onclick="appendToInput('/')">÷</button>
             <button onclick="appendToInput('4')">4</button>
             <button onclick="appendToInput('5')">5</button>
             <button onclick="appendToInput('6')">6</button>
+            <button class="operator" onclick="appendToInput('*')">x</button>
             <button onclick="appendToInput('1')">1</button>
             <button onclick="appendToInput('2')">2</button>
             <button onclick="appendToInput('3')">3</button>
+            <button class="operator" onclick="appendToInput('-')">-</button>
             <button onclick="appendToInput('0')">0</button>
             <button onclick="appendToInput('.')">.</button>
-
-            <!-- Basic operators -->
-            <button class="operator" onclick="appendToInput('+')">+</button>
-            <button class="operator" onclick="appendToInput('-')">-</button>
-            <button class="operator" onclick="appendToInput('*')">x</button>
-            <button class="operator" onclick="appendToInput('/')">÷</button>
-
-            <!-- Other functions -->
-            <button onclick="appendToInput('sin')">sin</button>
-            <button onclick="appendToInput('cos')">cos</button>
-            <button onclick="appendToInput('tan')">tan</button>
-            <button onclick="appendToInput('csc')">csc</button>
-            <button onclick="appendToInput('sec')">sec</button>
-            <button onclick="appendToInput('cot')">cot</button>
-            <button onclick="appendToInput('x^2')">x^2</button>
-            <button onclick="appendToInput('x^n')">x^n</button>
-            <button onclick="appendToInput('m+')">m+</button>
-            <button onclick="appendToInput('m-')">m-</button>
-            <button onclick="appendToInput('acos')">acos</button>
-            <button onclick="appendToInput('asin')">asin</button>
-            <button onclick="appendToInput('atan')">atan</button>
-            <button onclick="appendToInput('log10')">log10</button>
-            <button onclick="appendToInput('log2')">log2</button>
-            <button onclick="appendToInput('log')">log</button>
-            <button onclick="appendToInput('exp')">exp</button>
-            <button onclick="appendToInput('10^x')">10^x</button>
-            <button onclick="appendToInput('2^x')">2^x</button>
-            <button onclick="appendToInput('round')">round</button>
-            <button onclick="appendToInput('x!')">x!</button>
-            <button onclick="appendToInput('min')">min</button>
-            <button onclick="appendToInput('e^x')">e^x</button>
-            <button onclick="appendToInput('x~m')">x~m</button>
-            <button onclick="appendToInput('m re')">m re</button>
-            <button onclick="appendToInput('exp')">exp</button>
-
-            <!-- Square root functions -->
-            <button onclick="appendToInput('sqrt')">√</button>
-            <button onclick="appendToInput('nthRoot')">n√</button>
-
-            <!-- Computer functions -->
-            <button onclick="appendToInput('bin')">bin</button>
-            <button onclick="appendToInput('dec')">dec</button>
-            <button onclick="appendToInput('hex')">hex</button>
-            <button onclick="appendToInput('sqrt')">sqrt</button>
-            <button onclick="appendToInput('fsqrt')">fsqrt</button>
-            <button onclick="appendToInput('fsqrtf')">fsqrtf</button>
-            <button onclick="appendToInput('f_sqrt')">f_sqrt</button>
-            <button onclick="appendToInput('f_sqrtf')">f_sqrtf</button>
-
-            <!-- Parentheses, Mod, and Special Characters -->
-            <button onclick="appendToInput('('">(</button>
-            <button onclick="appendToInput(')')">)</button>
-            <button onclick="appendToInput('mod')">mod</button>
-
-            <!-- Constants and special symbols -->
-            <button onclick="clear()">C</button>
-            <button onclick="clearMemory()">MC</button>
-            <button onclick="clearAll()">AC</button>
-            <button onclick="toggleSign()">+/-</button>
-            <button onclick="appendToInput('deg')">deg</button>
-            <button onclick="appendToInput('rad')">rad</button>
-            <button onclick="appendToInput('π')">π</button>
-            <button onclick="appendToInput('hyp')">hyp</button>
-            <button onclick="appendToInput('1/x')">1/x</button>
-
-            <!-- Equal sign -->
             <button class="operator" onclick="calculate()">=</button>
+            <button class="operator" onclick="appendToInput('+')">+</button>
+
+            <!-- Basic Arithmetic Operations -->
+            <button class="operator" onclick="appendToInput('sin')">sin</button>
+            <button class="operator" onclick="appendToInput('cos')">cos</button>
+            <button class="operator" onclick="appendToInput('tan')">tan</button>
+            <button class="operator" onclick="appendToInput('asin')">asin</button>
+            <button class="operator" onclick="appendToInput('acos')">acos</button>
+            <button class="operator" onclick="appendToInput('atan')">atan</button>
+            <button class="operator" onclick="appendToInput('x^y')">x^y</button>
+            <button class="operator" onclick="appendToInput('sqrt')">√x</button>
+            <button class="operator" onclick="appendToInput('ln')">ln</button>
+            <button class="operator" onclick="appendToInput('log')">log</button>
+            <button class="operator" onclick="appendToInput('sinh')">sinh</button>
+            <button class="operator" onclick="appendToInput('cosh')">cosh</button>
+            <button class="operator" onclick="appendToInput('tanh')">tanh</button>
+            <button class="operator" onclick="appendToInput('mean')">Mean</button>
+            <button class="operator" onclick="appendToInput('stddev')">Std Dev</button>
+            <button class="operator" onclick="appendToInput('variance')">Variance</button>
+            <button class="operator" onclick="appendToInput('matrix_add')">Matrix Add</button>
+            <button class="operator" onclick="appendToInput('matrix_sub')">Matrix Sub</button>
+            <button class="operator" onclick="appendToInput('matrix_mult')">Matrix Mult</button>
+            <button class="operator" onclick="appendToInput('det')">Determinant</button>
+            <button class="operator" onclick="appendToInput('inv')">Inverse</button>
+            <button class="operator" onclick="appendToInput('complex_add')">Complex Add</button>
+            <button class="operator" onclick="appendToInput('complex_sub')">Complex Sub</button>
+            <button class="operator" onclick="appendToInput('complex_mult')">Complex Mult</button>
+            <button class="operator" onclick="appendToInput('complex_div')">Complex Div</button>
+            <button class="operator" onclick="appendToInput('conjugate')">Conjugate</button>
+            <button class="operator" onclick="appendToInput('solve_poly')">Solve Poly</button>
+            <button class="operator" onclick="appendToInput('solve_linear')">Solve Linear</button>
+            <button class="operator" onclick="appendToInput('solve_quadratic')">Solve Quadratic</button>
+            <button class="operator" onclick="appendToInput('solve_cubic')">Solve Cubic</button>
+            <button class="operator" onclick="appendToInput('numeric_integration')">Numeric Integration</button>
+            <button class="operator" onclick="appendToInput('numeric_differentiation')">Numeric Differentiation</button>
+            <button class="operator" onclick="appendToInput('convert_base')">Convert Base</button>
+            <button class="operator" onclick="appendToInput('binary_arithmetic')">Binary Arithmetic</button>
+            <button class="operator" onclick="appendToInput('bitwise_and')">Bitwise AND</button>
+            <button class="operator" onclick="appendToInput('bitwise_or')">Bitwise OR</button>
+            <button class="operator" onclick="appendToInput('bitwise_xor')">Bitwise XOR</button>
+            <button class="operator" onclick="appendToInput('logical_and')">Logical AND</button>
+            <button class="operator" onclick="appendToInput('logical_or')">Logical OR</button>
+            <button class="operator" onclick="appendToInput('logical_xor')">Logical XOR</button>
+            <button class="operator" onclick="appendToInput('time_value_of_money')">Time Value of Money</button>
+            <button class="operator" onclick="appendToInput('amortization')">Amortization</button>
+            <button class="operator" onclick="appendToInput('unit_conversion')">Unit Conversion</button>
+            <button class="operator" onclick="appendToInput('graph_plot')">Graph Plot</button>
+
+            <!-- Trigonometric Functions -->
+            <button class="operator" onclick="appendToInput('csc')">Cosecant</button>
+            <button class="operator" onclick="appendToInput('sec')">Secant</button>
+            <button class="operator" onclick="appendToInput('cot')">Cotangent</button>
+
+            <!-- Exponential and Logarithmic Functions -->
+            <button class="operator" onclick="appendToInput('x2')">x²</button>
+            <button class="operator" onclick="appendToInput('xn')">xⁿ</button>
+            <button class="operator" onclick="appendToInput('m+')">m+</button>
+            <button class="operator" onclick="appendToInput('m-')">m-</button>
+            <button class="operator" onclick="appendToInput('cos^-1')">cos⁻¹</button>
+            <button class="operator" onclick="appendToInput('sin^-1')">sin⁻¹</button>
+            <button class="operator" onclick="appendToInput('tan^-1')">tan⁻¹</button>
+            <button class="operator" onclick="appendToInput('log10')">log₁₀</button>
+            <button class="operator" onclick="appendToInput('log2')">log₂</button>
+            <button class="operator" onclick="appendToInput('loge')">logₑ</button>
+            <button class="operator" onclick="appendToInput('10^x')">10ˣ</button>
+            <button class="operator" onclick="appendToInput('2^x')">2ˣ</button>
+            <button class="operator" onclick="appendToInput('exp')">exp</button>
+            <button class="operator" onclick="appendToInput('round')">round</button>
+            <button class="operator" onclick="appendToInput('x!')">x!</button>
+            <button class="operator" onclick="appendToInput('min')">min</button>
+
+            <!-- Additional Functions -->
+            <button class="operator" onclick="appendToInput('hyp')">Hyp</button>
+            <button class="operator" onclick="appendToInput('1/x')">1/x</button>
+            <button class="operator" onclick="appendToInput('+/-')">+/-</button>
+            <button class="operator" onclick="appendToInput('(')">(</button>
+            <button class="operator" onclick="appendToInput(')')">)</button>
+            <button class="operator" onclick="appendToInput('mod')">mod</button>
+            <button class="operator" onclick="appendToInput('√')">√</button>
+            <button class="operator" onclick="appendToInput('n√')">n√</button>
+            <button class="operator" onclick="appendToInput('bin')">bin</button>
+            <button class="operator" onclick="appendToInput('dec')">dec</button>
+            <button class="operator" onclick="appendToInput('hex')">hex</button>
+            <button class="operator" onclick="appendToInput('sqrt')">sqrt</button>
+            <button class="operator" onclick="appendToInput('fsqrt')">fsqrt</button>
+            <button class="operator" onclick="appendToInput('fsqrtf')">fsqrtf</button>
+            <button class="operator" onclick="appendToInput('f_sqrt')">f_sqrt</button>
+            <button class="operator" onclick="appendToInput('f_sqrtf')">f_sqrtf</button>
+            <button class="operator" onclick="appendToInput('(')">2nd</button>
+            <button class="operator" onclick="appendToInput('dec')">dec</button>
+            <button class="operator" onclick="appendToInput('hex')">hex</button>
+            <button class="operator" onclick="appendToInput('oct')">oct</button>
+            <button class="operator" onclick="appendToInput('bin')">bin</button>
+            <button class="operator" onclick="appendToInput('Х~У')">Х~У</button>
+            <button class="operator" onclick="clear()">AC</button>
+            <button class="operator" onclick="toggleDegreesRadians()">> deg rad</button>
+            <button class="operator" onclick="appendToInput('hyp')">hyp</button>
+            <button class="operator" onclick="appendToInput('1/x')">1/x</button>
+            <button class="operator" onclick="togglePlusMinus()">+/-</button>
+            <button class="operator" onclick="appendToInput(')')">)</button>
+            <button class="operator" onclick="appendToInput('mod')">mod</button>
+            <button class="operator" onclick="appendToInput('∠')">∠</button>
+
+            <!-- Advanced Functions -->
+            <button class="operator" onclick="appendToInput('exp')">exp</button>
+            <button class="operator" onclick="appendToInput('fsqrt')">fsqrt</button>
+            <button class="operator" onclick="appendToInput('fsqrtf')">fsqrtf</button>
+            <button class="operator" onclick="appendToInput('f_sqrt')">f_sqrt</button>
+            <button class="operator" onclick="appendToInput('f_sqrtf')">f_sqrtf</button>
+
+            <!-- More Functions -->
+            <button class="operator" onclick="appendToInput('2nd')">2nd</button>
+            <button class="operator" onclick="appendToInput('dec')">dec</button>
+            <button class="operator" onclick="appendToInput('hex')">hex</button>
+            <button class="operator" onclick="appendToInput('oct')">oct</button>
+            <button class="operator" onclick="appendToInput('bin')">bin</button>
+            <button class="operator" onclick="appendToInput('Х~У')">Х~У</button>
+            <button class="operator" onclick="clear()">AC</button>
+            <button class="operator" onclick="toggleDegreesRadians()">> deg rad</button>
+            <button class="operator" onclick="appendToInput('hyp')">hyp</button>
+            <button class="operator" onclick="appendToInput('1/x')">1/x</button>
+            <button class="operator" onclick="togglePlusMinus()">+/-</button>
+            <button class="operator" onclick="appendToInput(')')">)</button>
+            <button class="operator" onclick="appendToInput('mod')">mod</button>
+            <button class="operator" onclick="appendToInput('∠')">∠</button>
+            <button class="operator" onclick="appendToInput('Sin')">Sin</button>
+            <button class="operator" onclick="appendToInput('Cos')">Cos</button>
+            <button class="operator" onclick="appendToInput('Tan')">Tan</button>
+            <button class="operator" onclick="appendToInput('x\"')">x\"</button>
+            <button class="operator" onclick="appendToInput('m+')">m+</button>
+            <button class="operator" onclick="appendToInput('7')">7</button>
+            <button class="operator" onclick="appendToInput('8')">8</button>
+            <button class="operator" onclick="appendToInput('9')">9</button>
+            <button class="operator" onclick="appendToInput('sin')">sin</button>
+            <button class="operator" onclick="appendToInput('cos^-1')">cos⁻¹</button>
+            <button class="operator" onclick="appendToInput('tan^-1')">tan⁻¹</button>
+            <button class="operator" onclick="appendToInput('sqrt')">√</button>
+            <button class="operator" onclick="appendToInput('sqrt')">√</button>
+            <button class="operator" onclick="appendToInput('m-')">m-</button>
+            <button class="operator" onclick="appendToInput('4')">4</button>
+            <button class="operator" onclick="appendToInput('5')">5</button>
+            <button class="operator" onclick="appendToInput('6')">6</button>
+            <button class="operator" onclick="appendToInput('matrix_add')">Matrix Add</button>
+            <button class="operator" onclick="appendToInput('matrix_sub')">Matrix Sub</button>
+            <button class="operator" onclick="appendToInput('matrix_mult')">Matrix Mult</button>
+            <button class="operator" onclick="appendToInput('det')">Determinant</button>
+            <button class="operator" onclick="appendToInput('inv')">Inverse</button>
+            <button class="operator" onclick="appendToInput('complex_add')">Complex Add</button>
+            <button class="operator" onclick="appendToInput('complex_sub')">Complex Sub</button>
+            <button class="operator" onclick="appendToInput('complex_mult')">Complex Mult</button>
+            <button class="operator" onclick="appendToInput('complex_div')">Complex Div</button>
+            <button class="operator" onclick="appendToInput('conjugate')">Conjugate</button>
+            <button class="operator" onclick="appendToInput('solve_poly')">Solve Poly</button>
+            <button class="operator" onclick="appendToInput('solve_linear')">Solve Linear</button>
+            <button class="operator" onclick="appendToInput('solve_quadratic')">Solve Quadratic</button>
+            <button class="operator" onclick="appendToInput('solve_cubic')">Solve Cubic</button>
+            <button class="operator" onclick="appendToInput('numeric_integration')">Numeric Integration</button>
+            <button class="operator" onclick="appendToInput('numeric_differentiation')">Numeric Differentiation</button>
+            <button class="operator" onclick="appendToInput('convert_base')">Convert Base</button>
+            <button class="operator" onclick="appendToInput('binary_arithmetic')">Binary Arithmetic</button>
+            <button class="operator" onclick="appendToInput('bitwise_and')">Bitwise AND</button>
+            <button class="operator" onclick="appendToInput('bitwise_or')">Bitwise OR</button>
+            <button class="operator" onclick="appendToInput('bitwise_xor')">Bitwise XOR</button>
+            <button class="operator" onclick="appendToInput('logical_and')">Logical AND</button>
+            <button class="operator" onclick="appendToInput('logical_or')">Logical OR</button>
+            <button class="operator" onclick="appendToInput('logical_xor')">Logical XOR</button>
+            <button class="operator" onclick="appendToInput('time_value_of_money')">Time Value of Money</button>
+            <button class="operator" onclick="appendToInput('amortization')">Amortization</button>
+            <button class="operator" onclick="appendToInput('unit_conversion')">Unit Conversion</button>
+            <button class="operator" onclick="appendToInput('graph_plot')">Graph Plot</button>
+
+            <!-- Trigonometric Functions -->
+            <button class="operator" onclick="appendToInput('csc')">Cosecant</button>
+            <button class="operator" onclick="appendToInput('sec')">Secant</button>
+            <button class="operator" onclick="appendToInput('cot')">Cotangent</button>
+
+            <!-- Exponential and Logarithmic Functions -->
+            <button class="operator" onclick="appendToInput('x2')">x²</button>
+            <button class="operator" onclick="appendToInput('xn')">xⁿ</button>
+            <button class="operator" onclick="appendToInput('m+')">m+</button>
+            <button class="operator" onclick="appendToInput('m-')">m-</button>
+            <button class="operator" onclick="appendToInput('cos^-1')">cos⁻¹</button>
+            <button class="operator" onclick="appendToInput('sin^-1')">sin⁻¹</button>
+            <button class="operator" onclick="appendToInput('tan^-1')">tan⁻¹</button>
+            <button class="operator" onclick="appendToInput('log10')">log₁₀</button>
+            <button class="operator" onclick="appendToInput('log2')">log₂</button>
+            <button class="operator" onclick="appendToInput('loge')">logₑ</button>
+            <button class="operator" onclick="appendToInput('10^x')">10ˣ</button>
+            <button class="operator" onclick="appendToInput('2^x')">2ˣ</button>
+            <button class="operator" onclick="appendToInput('exp')">exp</button>
+            <button class="operator" onclick="appendToInput('round')">round</button>
+            <button class="operator" onclick="appendToInput('x!')">x!</button>
+            <button class="operator" onclick="appendToInput('min')">min</button>
+
+            <!-- Additional Functions -->
+            <button class="operator" onclick="appendToInput('hyp')">Hyp</button>
+            <button class="operator" onclick="appendToInput('1/x')">1/x</button>
+            <button class="operator" onclick="appendToInput('+/-')">+/-</button>
+            <button class="operator" onclick="appendToInput('(')">(</button>
+            <button class="operator" onclick="appendToInput(')')">)</button>
+            <button class="operator" onclick="appendToInput('mod')">mod</button>
+            <button class="operator" onclick="appendToInput('∠')">∠</button>
+
+            <!-- Advanced Functions -->
+            <button class="operator" onclick="appendToInput('exp')">exp</button>
+            <button class="operator" onclick="appendToInput('fsqrt')">fsqrt</button>
+            <button class="operator" onclick="appendToInput('fsqrtf')">fsqrtf</button>
+            <button class="operator" onclick="appendToInput('f_sqrt')">f_sqrt</button>
+            <button class="operator" onclick="appendToInput('f_sqrtf')">f_sqrtf</button>
+
+            <!-- More Functions -->
+            <button class="operator" onclick="appendToInput('2nd')">2nd</button>
+            <button class="operator" onclick="appendToInput('dec')">dec</button>
+            <button class="operator" onclick="appendToInput('hex')">hex</button>
+            <button class="operator" onclick="appendToInput('oct')">oct</button>
+            <button class="operator" onclick="appendToInput('bin')">bin</button>
+            <button class="operator" onclick="appendToInput('Х~У')">Х~У</button>
+            <button class="operator" onclick="clear()">AC</button>
+            <button class="operator" onclick="toggleDegreesRadians()">> deg rad</button>
+            <button class="operator" onclick="appendToInput('hyp')">hyp</button>
+            <button class="operator" onclick="appendToInput('1/x')">1/x</button>
+            <button class="operator" onclick="togglePlusMinus()">+/-</button>
+            <button class="operator" onclick="appendToInput(')')">)</button>
+            <button class="operator" onclick="appendToInput('mod')">mod</button>
+            <button class="operator" onclick="appendToInput('∠')">∠</button>
         </div>
     </div>
 
@@ -157,6 +319,7 @@
         document.addEventListener("DOMContentLoaded", function () {
             const display = document.getElementById("display");
             let currentInput = "";
+            let degreesMode = true;
 
             function updateDisplay() {
                 display.value = currentInput;
@@ -183,16 +346,14 @@
                 }
             }
 
-            function clearMemory() {
-                // Functionality to clear memory
+            function toggleDegreesRadians() {
+                degreesMode = !degreesMode;
+                updateDisplay();
             }
 
-            function clearAll() {
-                // Functionality to clear all
-            }
-
-            function toggleSign() {
-                // Functionality to toggle sign
+            function togglePlusMinus() {
+                currentInput = currentInput.startsWith('-') ? currentInput.slice(1) : '-' + currentInput;
+                updateDisplay();
             }
         });
     </script>
