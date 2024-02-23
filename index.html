@@ -114,39 +114,13 @@
         <div id="calculator" class="dark-mode">
             <input type="text" id="display" readonly class="dark-mode">
             <div id="buttons" class="dark-mode">
-                <!-- Left Side: Operators and Math Functions -->
-                <button onclick="appendToDisplay('Math.sin(')">sin</button>
-                <button onclick="appendToDisplay('Math.cos(')">cos</button>
-                <button onclick="appendToDisplay('Math.tan(')">tan</button>
-                <button onclick="appendToDisplay('1/Math.sin(')">csc</button>
-                <button onclick="appendToDisplay('1/Math.cos(')">sec</button>
-                <button onclick="appendToDisplay('1/Math.tan(')">cot</button>
-                <button onclick="appendToDisplay('**2')">x<sup>2</sup></button>
-                <button onclick="appendToDisplay('**10')">x<sup>10</sup></button>
-                <button onclick="memoryAdd()">m+</button>
-                <button onclick="memorySubtract()">m-</button>
-                <button onclick="appendToDisplay('Math.acos(')">acos</button>
-                <button onclick="appendToDisplay('Math.asin(')">asin</button>
-                <button onclick="appendToDisplay('Math.atan(')">atan</button>
-                <button onclick="appendToDisplay('Math.log10(')">log<sub>10</sub></button>
-                <button onclick="appendToDisplay('Math.log2(')">log<sub>2</sub></button>
-                <button onclick="appendToDisplay('Math.log(')">log<sub>e</sub></button>
-                <button onclick="appendToDisplay('Math.exp(')">exp</button>
-                <button onclick="appendToDisplay('**10')">10<sup>x</sup></button>
-                <button onclick="appendToDisplay('**2')">2<sup>x</sup></button>
-                <button onclick="appendToDisplay('Math.round(')">round</button>
-                <button onclick="factorial()">x!</button>
-                <button onclick="min()">min</button>
-                <button onclick="appendToDisplay('Math.exp(')">e<sup>x</sup></button>
-                <button onclick="appendToDisplay('~')">~</button>
-                <button onclick="appendToDisplay('Math.re(')">re</button>
-                <button onclick="appendToDisplay('Math.exp(')">exp</button>
-
-                <!-- Top Row: AC, C, and others -->
-                <button onclick="backspace()">←</button>
+                <!-- Top Row: +, -, ÷, ×, AC, Backspace -->
+                <button onclick="appendToDisplay('+')">+</button>
+                <button onclick="appendToDisplay('-')">-</button>
+                <button onclick="appendToDisplay('/')">÷</button>
+                <button onclick="appendToDisplay('*')">x</button>
                 <button onclick="clearAll()">AC</button>
-                <button onclick="toggleSign()">+/-</button>
-                <button onclick="appendToDisplay('%')">%</button>
+                <button onclick="backspace()">←</button>
 
                 <!-- Numbers and Basic Operators -->
                 <button onclick="appendToDisplay('7')">7</button>
